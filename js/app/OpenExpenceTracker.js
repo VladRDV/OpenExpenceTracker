@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
-import { testAction } from './redux/actions/test_action';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Alert } from 'react-native';
+import { testAction } from '../redux/actions/test_action';
 import { connect } from 'react-redux';
 
 const OpenExpenceTracker = (props) => {
-	props.testAction('RRRRRRRRRRRR');
+	// props.testAction('RRRRRRRRRRRR');
+	// Alert.alert('fdfd', 'tttt', [
+	// 	{
+	// 		text: 'fdfdfd',
+	// 		onPress: () => props.testAction('FFFFFFFFFFFFFF')
+	// 	}
+	// ]);
 	return (
 		<View style={_s.oet}>
 			<StatusBar barStyle="dark-content" />

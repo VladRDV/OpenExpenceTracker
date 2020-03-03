@@ -5,13 +5,17 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { store, persistor } from '../redux/store/setup';
 import OpenExpenceTracker from './OpenExpenceTracker';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Text } from 'react-native';
 
 const App = () => {
 	return (
 		<Provider store={store}>
-			<OpenExpenceTracker />
+			<PersistGate loading={<Text style={{ color: 'red' }}>please wait</Text>} persistor={persistor}>
+				<OpenExpenceTracker />
+			</PersistGate>
 		</Provider>
 	);
 };
