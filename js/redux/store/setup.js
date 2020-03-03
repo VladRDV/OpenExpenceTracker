@@ -4,6 +4,8 @@ import rootReducer from '../state/combine';
 import { createLogger } from 'redux-logger';
 import AsyncStorage from '@react-native-community/async-storage';
 import { persistStore, persistReducer } from 'redux-persist';
+import createSagaMiddleware from 'redux-saga';
+import activateSagas from './activateSagas';
 
 const persistConfig = {
 	key: 'root',
@@ -18,13 +20,16 @@ var logger = createLogger({
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+const sagaMiddleware = createSagaMiddleware();
 
 const configureStore = () => {
 	let store = debugging
 		? createStore(persistedReducer, composeWithDevTools(applyMiddleware(logger)))
-		: // : createStore(persistedReducer, applyMiddleware(sagaMiddleware));
-			createStore(persistedReducer);
+		: createStore(persistedReducer, applyMiddleware(sagaMiddleware));
 	let persistor = persistStore(store);
+
+	activateSagas(sagaMiddleware);
+
 	return { store, persistor };
 };
 
