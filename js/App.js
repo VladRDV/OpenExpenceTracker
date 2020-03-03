@@ -15,7 +15,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
+import {Provider} from 'react-redux';
 import {
   Header,
   LearnMoreLinks,
@@ -26,7 +26,7 @@ import {
 
 const App = () => {
   return (
-    <>
+    <Provider>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -68,7 +68,7 @@ const App = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+    </Provider>
   );
 };
 
