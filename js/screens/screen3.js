@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-export default class screen extends Component {
+export default class Screen3 extends Component {
 	render () {
 		return (
 			<View>
-				<Text children={'AAAAAAAAAAAAAAAAa'} />
+				<Text children={'screen 3'} />
 			</View>
 		);
 	}

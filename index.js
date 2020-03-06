@@ -1,3 +1,8 @@
+/**
+ * Open Expence Tracker
+ * https://github.com/VladRDV/OpenExpenceTracker.git
+**/
+
 import { AppRegistry } from 'react-native';
 import App from './js/app/App';
 import { name as appName } from './app.json';
