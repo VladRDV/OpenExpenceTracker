@@ -12,7 +12,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import 'react-native-gesture-handler';
 import SplashScreen from './components/SplashScreen';
 
-const App = () => {
+export default function TopAppWrapper () {
 	return (
 		<Provider store={store}>
 			<PersistGate loading={<SplashScreen />} persistor={persistor}>
@@ -20,6 +20,4 @@ const App = () => {
 			</PersistGate>
 		</Provider>
 	);
-};
-
-export default App;
+}

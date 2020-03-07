@@ -2,9 +2,10 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import AddStack from './Stacks/AddStack';
-import HistoryStack from './Stacks/HistoryStack';
+import AddRecordStack from './Stacks/AddRecordStack';
+import RecordsStack from './Stacks/RecordsStack';
 import SettingsStack from './Stacks/SettingsStack';
+import StatisticsStack from './Stacks/StatisticsStack';
 
 import { scale } from 'react-native-size-matters';
 
@@ -14,26 +15,35 @@ export default function BottomTabs () {
 	return (
 		<Navigator>
 			<Screen
-				name="History"
-				component={HistoryStack}
+				name="RecordsStack"
+				component={RecordsStack}
 				options={{
-					tabBarLabel: 'History',
+					tabBarLabel: 'Records',
 					tabBarIcon: () => <Icon style={[ { color: 'white' } ]} size={scale(25)} name={'ios-home'} />
 				}}
 			/>
 			<Screen
-				name="Tab 2"
-				component={Screen2}
+				name="Statistics"
+				component={StatisticsStack}
 				options={{
-					tabBarLabel: 'Screen2',
-					tabBarIcon: () => <Icon style={[ { color: 'white' } ]} size={25} name={'ios-home'} />
+					tabBarLabel: 'Statistics',
+					tabBarIcon: () => <Icon style={[ { color: 'white' } ]} size={25} name={'ios-settings'} />
 				}}
 			/>
 			<Screen
-				name="Tab 3"
-				component={Screen3}
+				name="AddRecord"
+				component={AddRecordStack}
 				options={{
-					tabBarLabel: 'Screen3',
+					tabBarLabel: 'Add Record',
+					tabBarIcon: () => <Icon style={[ { color: 'white' } ]} size={25} name={'ios-home'} />
+				}}
+			/>
+
+			<Screen
+				name="Settings"
+				component={SettingsStack}
+				options={{
+					tabBarLabel: 'Settings',
 					tabBarIcon: () => <Icon style={[ { color: 'white' } ]} size={25} name={'ios-settings'} />
 				}}
 			/>
