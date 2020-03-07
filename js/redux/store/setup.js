@@ -1,36 +1,38 @@
+import { DEV_MODE } from 'react-native-dotenv';
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from '../state/combine';
-import { createLogger } from 'redux-logger';
+import rootReducer from '../state/combineReducers';
 import AsyncStorage from '@react-native-community/async-storage';
 import { persistStore, persistReducer } from 'redux-persist';
+// devTools
+import { createLogger } from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
+// redux saga (for handling side effects(aka async stuff))
 import createSagaMiddleware from 'redux-saga';
 import activateSagas from './activateSagas';
 
-const persistConfig = {
-	key: 'root',
-	storage: AsyncStorage
-};
-const debugging = window && window.__REDUX_DEVTOOLS_EXTENSION__;
+function configureReduxStore () {
+	const persistConfig = {
+		key: 'root',
+		storage: AsyncStorage,
+		debug: !!DEV_MODE
+	};
+	const isDebugging = window && window.__REDUX_DEVTOOLS_EXTENSION__;
+	const reduxLogger = createLogger({
+		predicate: (getState, action) => isDebugging,
+		collapsed: true,
+		duration: true
+	});
+	const persistedReducer = persistReducer(persistConfig, rootReducer);
+	const sagaMiddleware = createSagaMiddleware();
 
-var logger = createLogger({
-	predicate: (getState, action) => debugging,
-	collapsed: true,
-	duration: true
-});
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-const sagaMiddleware = createSagaMiddleware();
-
-const configureStore = () => {
-	let store = debugging
-		? createStore(persistedReducer, composeWithDevTools(applyMiddleware(logger)))
+	let store = isDebugging
+		? createStore(persistedReducer, composeWithDevTools(applyMiddleware(reduxLogger, sagaMiddleware)))
 		: createStore(persistedReducer, applyMiddleware(sagaMiddleware));
 	let persistor = persistStore(store);
 
 	activateSagas(sagaMiddleware);
 
 	return { store, persistor };
-};
+}
 
-export const { store, persistor } = configureStore();
+export const { store, persistor } = configureReduxStore();
