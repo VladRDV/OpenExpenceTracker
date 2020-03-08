@@ -7,19 +7,19 @@ export default function AddStack () {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
 	return (
-		<Navigator>
+		<Navigator headerMode={'none'}>
 			<Screen
 				name="RecordListScreen"
 				component={RecordListScreen}
 				options={{
-					title: 'RecordsList'
+					title: 'Records list'
 				}}
 			/>
 			<Screen
 				name="RecordDetailsScreen"
 				component={RedordDetailsScreen}
 				options={{
-					title: 'RecordsDetails'
+					title: 'Records details'
 				}}
 			/>
 		</Navigator>

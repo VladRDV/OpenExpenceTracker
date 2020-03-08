@@ -6,7 +6,7 @@ export default function LoggedInNav () {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
 	return (
-		<Navigator>
+		<Navigator headerMode={'none'}>
 			<Screen name="Main" options={{ title: '' }} component={BottomTabs} />
 		</Navigator>
 	);

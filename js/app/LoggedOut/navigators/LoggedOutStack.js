@@ -6,7 +6,7 @@ export default function LoggedOutStack () {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
 	return (
-		<Navigator>
+		<Navigator headerMode={'none'}>
 			<Screen name="SignIn" component={SignInScreen} />
 		</Navigator>
 	);

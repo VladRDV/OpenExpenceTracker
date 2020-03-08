@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
 
-import LoggedInStack from './LoggedIn/navigators/LoggedOutStack';
+import LoggedInStack from './LoggedIn/navigators/LoggedInStack';
 import LoggedOutStack from './LoggedOut/navigators/LoggedOutStack';
 
 const OpenExpenceTracker = (props) => {
@@ -19,11 +19,11 @@ const OpenExpenceTracker = (props) => {
 };
 
 function createRootNavigation () {
-	if (1) {
-		return <LoggedInStack />;
-	} else {
-		return <LoggedOutStack />;
-	}
+	// if (1) {
+	return <LoggedInStack />;
+	// } else {
+	// 	return <LoggedOutStack />;
+	// }
 }
 
 OpenExpenceTracker.propTypes = {

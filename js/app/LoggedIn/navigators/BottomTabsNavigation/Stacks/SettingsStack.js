@@ -7,7 +7,7 @@ export default function SettingsStack () {
 	const { Navigator, Screen } = Stack;
 	return (
 		<Navigator>
-			<Screen name="SettingsScreen" component={SettingsScreen} />
+			<Screen name="SettingsScreen" options={{ title: 'Settings' }} component={SettingsScreen} />
 		</Navigator>
 	);
 }

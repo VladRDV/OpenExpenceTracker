@@ -1,11 +1,10 @@
 import React from 'react';
 // import { View, Text } from 'react-native';
-import { Text, View, Button } from 'react-native-ui-lib';
+import { View, Button } from 'react-native-ui-lib';
 
 export default function RecordDetailsScreen (props) {
 	return (
-		<View>
-			<Text children={'Records'} />
+		<View style={{ justifyContent: 'flex-end', flex: 1 }}>
 			<Button
 				backgroundColor="#ffB650"
 				label="RecordListScreen"

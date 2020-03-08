@@ -7,7 +7,7 @@ export default function StatisticsStack () {
 	const { Navigator, Screen } = Stack;
 	return (
 		<Navigator>
-			<Screen name="StatisticsScreen" component={StatisticsScreen} />
+			<Screen name="StatisticsScreen" options={{ title: 'Statistics' }} component={StatisticsScreen} />
 		</Navigator>
 	);
 }
