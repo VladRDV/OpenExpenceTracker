@@ -4,7 +4,24 @@ import { View, Button, RadioButton, RadioGroup } from 'react-native-ui-lib';
 import ListItem from './components/ListItem';
 
 export default function RecordListScreen (props) {
-	const data = [ { date: '20-12-2020', ammount: '120%', type: 'inc', title: 'payday' } ];
+	const data = [
+		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' },
+		{ date: '20-11-2020', ammount: '1200$', type: 'inc', title: 'payday' }
+	];
 	return (
 		<View style={_s.container}>
 			<RadioGroup style={_s.filter}>
@@ -12,7 +29,7 @@ export default function RecordListScreen (props) {
 				<RadioButton label={'Income'} />
 				<RadioButton label={'Expence'} />
 			</RadioGroup>
-			<FlatList style={_s.list} data={data} renderItem={(item) => <ListItem data={item} />} keyExtractor={(item) => item.name} />
+			<FlatList style={_s.list} data={data} keyExtractor={({ index }) => index} renderItem={({ item }) => <ListItem data={item} />} />
 		</View>
 	);
 }
@@ -29,7 +46,6 @@ const _s = StyleSheet.create({
 		backgroundColor: 'red'
 	},
 	list: {
-		flex: 0.92,
-		backgroundColor: 'indigo'
+		flex: 0.92
 	}
 });
