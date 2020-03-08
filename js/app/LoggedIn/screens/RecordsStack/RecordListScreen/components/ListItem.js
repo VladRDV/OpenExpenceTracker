@@ -10,7 +10,7 @@ export default function RecordListScreen ({ data }) {
 	console.log(data, 'DDDDDD');
 	return (
 		<Animatable.View {...animationProps}>
-			<ListItem activeBackgroundColor={Colors.dark60} activeOpacity={0.3} height={77.5} onPress={() => Alert.alert(`pressed on record`)}>
+			<ListItem activeBackgroundColor={Colors.dark60} activeOpacity={0.3} height={60} onPress={() => Alert.alert(`pressed on record`)}>
 				<ListItem.Part left>
 					<Animatable.Image
 						source={{ uri: 'https://pbs.twimg.com/profile_images/2783430299/5134cbf0a710d3e58862bba85db46027_400x400.png' }}
