@@ -14,6 +14,15 @@ export default function RecordDetailsScreen (props) {
 				ref={(element) => (this.button_1 = element)}
 				onPress={() => props.navigation.navigate('RecordListScreen')}
 			/>
+			<Button
+				backgroundColor="#ffaa50"
+				label="AddNewRecordScreen"
+				labelStyle={{ fontWeight: '600' }}
+				style={{ marginBottom: 10 }}
+				enableShadow
+				ref={(element) => (this.button_1 = element)}
+				onPress={() => props.navigation.navigate('AddNewRecordScreen')}
+			/>
 		</View>
 	);
 }

@@ -3,9 +3,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { scale } from 'react-native-size-matters';
-// import { View, Alert } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-// import AddRecordStack from './Stacks/AddRecordStack';
 import RecordsStack from './Stacks/RecordsStack';
 import SettingsStack from './Stacks/SettingsStack';
 import StatisticsStack from './Stacks/StatisticsStack';
@@ -13,6 +12,7 @@ import StatisticsStack from './Stacks/StatisticsStack';
 export default function BottomTabs ({ navigation }) {
 	const Tabs = createMaterialBottomTabNavigator();
 	const { Navigator, Screen } = Tabs;
+	const icon_size = scale(20);
 	return (
 		<Navigator shifting initialRouteName="RecordsStack">
 			<Screen
@@ -21,7 +21,7 @@ export default function BottomTabs ({ navigation }) {
 				options={{
 					tabBarColor: 'tomato',
 					tabBarLabel: 'Home',
-					tabBarIcon: () => <Ionicons style={[ { color: 'white' } ]} size={scale(20)} name={'ios-home'} />
+					tabBarIcon: () => <Ionicons style={_s.icon} size={icon_size} name={'ios-home'} />
 				}}
 			/>
 			<Screen
@@ -30,7 +30,7 @@ export default function BottomTabs ({ navigation }) {
 				options={{
 					tabBarColor: '#ff9944',
 					tabBarLabel: 'Statistics',
-					tabBarIcon: (focused) => <Entypo style={[ { color: focused ? 'white' : 'grey' } ]} size={scale(20)} name={'pie-chart'} />
+					tabBarIcon: () => <Entypo style={_s.icon} size={icon_size} name={'pie-chart'} />
 				}}
 			/>
 
@@ -40,31 +40,12 @@ export default function BottomTabs ({ navigation }) {
 				options={{
 					tabBarColor: '#99aaff',
 					tabBarLabel: 'Settings',
-					tabBarIcon: () => <Ionicons style={[ { color: 'white' } ]} size={scale(20)} name={'ios-settings'} />
+					tabBarIcon: () => <Ionicons style={_s.icon} size={icon_size} name={'ios-settings'} />
 				}}
 			/>
-
-			{/* <Screen
-				name="AddRecord"
-				component={AddRecordStack}
-				options={{
-					tabBarColor: '#ffaa99',
-					tabBarLabel: 'Add Record',
-					tabBarIcon: () => (
-						<View
-							style={{
-								width: '140%',
-								height: '140%',
-								backgroundColor: 'indigo',
-								borderRadius: 50,
-								justifyContent: 'center',
-								alignItems: 'center'
-							}}>
-							<Ionicons style={[ { color: 'white' } ]} size={scale(20)} name={'md-add'} />
-						</View>
-					)
-				}}
-			/> */}
 		</Navigator>
 	);
 }
+const _s = StyleSheet.create({
+	icon: { color: 'white' }
+});
