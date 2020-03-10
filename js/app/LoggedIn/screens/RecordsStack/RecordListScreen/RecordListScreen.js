@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { View, Button, RadioButton, RadioGroup, Dialog, TouchableOpacity, Text } from 'react-native-ui-lib';
 import ListItem from './components/ListItem';
@@ -6,9 +6,12 @@ import ListItem from './components/ListItem';
 import { scale } from 'react-native-size-matters';
 import keygen from '../../../../../utils/keygen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Feather from 'react-native-vector-icons/Feather';
 
 export default function RecordListScreen ({ navigation }) {
 	const [ typeFilterMode, setTypeFilter ] = useState('all');
+	const [ isInSelectDeleteMode, toggleSelectDeleteMode ] = useState(false);
+	const [ itemsToDelete, setItemsToDelete ] = useState(false);
 	const [ categoryFilterOn, toggleCategoryFilter ] = useState(false);
 	const data = [
 		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
@@ -78,11 +81,18 @@ export default function RecordListScreen ({ navigation }) {
 			navigation.setOptions({
 				headerLeft: () => {
 					return (
-						<TouchableOpacity
-							style={{ marginHorizontal: scale(8) }}
-							onPress={() => toggleCategoryFilter(true)}
-							children={<MaterialIcons size={scale(25)} name={'filter-list'} color={'blue'} />}
-						/>
+						<View style={{ flexDirection: 'row' }}>
+							<TouchableOpacity
+								style={{ marginHorizontal: scale(8) }}
+								onPress={() => toggleSelectDeleteMode(true)}
+								children={<Feather size={scale(25)} name={'edit'} color={'blue'} />}
+							/>
+							<TouchableOpacity
+								style={{ marginHorizontal: scale(8) }}
+								onPress={() => toggleCategoryFilter(true)}
+								children={<MaterialIcons size={scale(25)} name={'filter-list'} color={'blue'} />}
+							/>
+						</View>
 					);
 				}
 			});
@@ -106,6 +116,7 @@ export default function RecordListScreen ({ navigation }) {
 			</RadioGroup>
 			<FlatList
 				initialNumToRender={8}
+				removeClippedSubviews
 				// viewabilityConfig={viewabilityConfig}
 				style={_s.list}
 				data={dataset}
@@ -117,6 +128,11 @@ export default function RecordListScreen ({ navigation }) {
 		</View>
 	);
 }
+RecordListScreen.whyDidYouRender = {
+	logOnDifferentValues: true,
+	customName: 'lista zapisa'
+};
+
 // function sortByDate (arr) {
 // 	// const array = [ { date: '2018-05-11' }, { date: '2018-05-12' }, { date: '2018-05-10' } ];
 // 	return array.sort((a, b) => new Moment(a.date).format('YYYYMMDD') - new Moment(b.date).format('YYYYMMDD'));
