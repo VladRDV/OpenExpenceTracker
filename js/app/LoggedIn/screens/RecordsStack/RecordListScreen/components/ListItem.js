@@ -2,21 +2,48 @@ import React from 'react';
 import { AnimatableManager, ThemeManager, Colors, BorderRadiuses, ListItem, Text } from 'react-native-ui-lib'; //eslint-disable-line
 import { StyleSheet, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { scale } from 'react-native-size-matters';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-export default function RecordListScreen ({ data }) {
-	const statusColor = data.type === 'inc' ? Colors.green30 : Colors.red30;
-	const animationProps = AnimatableManager.presets.fadeInRight;
-	const imageAnimationProps = AnimatableManager.getRandomDelay();
-	console.log(data, 'DDDDDD');
-	return (
-		<Animatable.View {...animationProps}>
-			<ListItem activeBackgroundColor={Colors.dark60} activeOpacity={0.3} height={60} onPress={() => Alert.alert(`pressed on record`)}>
+export default function RecordListScreen ({ data, condition, typeFilterMode }) {
+	const typeColor = data.type === 'inc' ? Colors.green30 : Colors.red30;
+	// const fadeIn = AnimatableManager.presets.fadeIn;
+	// const fadeOut = AnimatableManager.presets.fadeOut;
+	const _out = {
+		0: {
+			opacity: 1,
+			// scale: 1,
+			height: scale(70)
+		},
+		1: {
+			opacity: 0,
+			// scale: 0,
+			height: 0
+		}
+	};
+	const _in = {
+		0: {
+			opacity: 0
+			// scale: 0,
+			// height: 0
+		},
+		1: {
+			opacity: 1
+			// scale: 1,
+			// height: scale(70)
+		}
+	};
+	// console.log(fadeIn, fadeOut, 'GGGGGGGGGGG');
+	const animation = condition ? _in : _out;
+	// const imageAnimationProps = AnimatableManager.getRandomDelay();
+	const arrow = data.type === 'inc' ? 'arrowup' : 'arrowdown';
+	const arrowColor = data.type === 'inc' ? 'lightgreen' : 'tomato';
+	if (condition) {
+		return (
+			// <Animatable.View style={{ height: scale(70) }} animation={_in} duration={200}>
+			<ListItem activeBackgroundColor={Colors.dark60} height={scale(70)} activeOpacity={0.3} onPress={() => Alert.alert(`pressed on record`)}>
 				<ListItem.Part left>
-					<Animatable.Image
-						source={{ uri: 'https://pbs.twimg.com/profile_images/2783430299/5134cbf0a710d3e58862bba85db46027_400x400.png' }}
-						style={_s.image}
-						{...imageAnimationProps}
-					/>
+					<AntDesign style={_s.arrow} name={arrow} size={scale(30)} color={arrowColor} />
 				</ListItem.Part>
 				<ListItem.Part middle column containerStyle={[ _s.border, { paddingRight: 17 } ]}>
 					<ListItem.Part containerStyle={{ marginBottom: 3 }}>
@@ -31,21 +58,40 @@ export default function RecordListScreen ({ data }) {
 						<Text style={{ flex: 1, marginRight: 10 }} text90 dark40 numberOfLines={1}>
 							{data.date}
 						</Text>
-						<Text text90 color={statusColor} numberOfLines={1}>
+						<Text text90 color={typeColor} numberOfLines={1}>
 							{data.title}
 						</Text>
 					</ListItem.Part>
 				</ListItem.Part>
 			</ListItem>
-		</Animatable.View>
-	);
+			// </Animatable.View>
+		);
+	} else {
+		return null;
+	}
+}
+function getAnimationProps (_in, _out, mode, type) {
+	if (mode === 'all') {
+		return _in;
+	} else if (mode === 'exp') {
+		if (type === 'exp') {
+			return _out;
+		} else {
+			return null;
+		}
+	} else if (mode === 'inc') {
+		if (type === 'inc') {
+			return _in;
+		} else {
+			return null;
+		}
+	}
 }
 
 const _s = StyleSheet.create({
-	image: {
-		width: 54,
-		height: 54,
-		borderRadius: BorderRadiuses.br20,
+	arrow: {
+		width: scale(30),
+		height: scale(30),
 		marginHorizontal: 14
 	},
 	border: {

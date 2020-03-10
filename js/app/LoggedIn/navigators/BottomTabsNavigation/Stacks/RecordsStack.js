@@ -7,25 +7,28 @@ import { TouchableOpacity, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { scale } from 'react-native-size-matters';
 
-export default function AddStack ({ navigation, route }) {
+export default function RecordsStack ({ navigation, route }) {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
+	console.log(route, 'fndkf');
+
 	return (
 		<Navigator>
 			<Screen
 				name="RecordListScreen"
 				component={RecordListScreen}
-				options={{
-					title: 'Records list',
-					headerTintColor: 'blue',
-					headerRight: () => (
-						<TouchableOpacity
-							style={{ marginHorizontal: scale(8) }}
-							onPress={() => navigation.navigate('AddNewRecordScreen')}
-							children={<Ionicons size={scale(25)} name={'md-add'} color={'blue'} />}
-							color="blue"
-						/>
-					)
+				options={() => {
+					return {
+						title: 'Records list',
+						headerTintColor: 'blue',
+						headerRight: () => (
+							<TouchableOpacity
+								style={{ marginHorizontal: scale(8) }}
+								onPress={() => navigation.navigate('AddNewRecordScreen')}
+								children={<Ionicons size={scale(25)} name={'md-add'} color={'blue'} />}
+							/>
+						)
+					};
 				}}
 			/>
 			<Screen

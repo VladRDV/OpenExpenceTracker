@@ -1,37 +1,119 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { View, Button, RadioButton, RadioGroup } from 'react-native-ui-lib';
+import { View, Button, RadioButton, RadioGroup, Dialog, TouchableOpacity, Text } from 'react-native-ui-lib';
 import ListItem from './components/ListItem';
 // import { moment } from 'moment';
 import { scale } from 'react-native-size-matters';
+import keygen from '../../../../../utils/keygen';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-export default function RecordListScreen (props) {
+export default function RecordListScreen ({ navigation }) {
+	const [ typeFilterMode, setTypeFilter ] = useState('all');
+	const [ categoryFilterOn, toggleCategoryFilter ] = useState(false);
 	const data = [
-		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
-		{ date: '22-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '22-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '22-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
-		{ date: '22-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '24-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday' },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday' },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday' }
+		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', ammount: '1200$', type: 'exp', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '24-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'exp', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+
+		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() }
 	];
+	const [ dataset, changedataset ] = useState(data);
+
+	useEffect(
+		() => {
+			navigation.setOptions({
+				headerLeft: () => {
+					return (
+						<TouchableOpacity
+							style={{ marginHorizontal: scale(8) }}
+							onPress={() => toggleCategoryFilter(true)}
+							children={<MaterialIcons size={scale(25)} name={'filter-list'} color={'blue'} />}
+						/>
+					);
+				}
+			});
+		},
+		[ categoryFilterOn ]
+	);
+	// const viewabilityConfig = {
+	// 	waitForInteraction: true,
+	// 	viewAreaCoveragePercentThreshold: 95
+	// };
+
 	return (
 		<View style={_s.container}>
-			<RadioGroup style={_s.filter}>
-				<RadioButton label={'All'} />
-				<RadioButton label={'Income'} />
-				<RadioButton label={'Expence'} />
+			<Dialog visible={categoryFilterOn} useSafeArea heipanDirection={'down'} onDismiss={() => toggleCategoryFilter(false)} height={100}>
+				<Text>ifdlhsgoiudfghd</Text>
+			</Dialog>
+			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
+				<RadioButton selected={typeFilterMode === 'all'} onPress={() => setTypeFilter('all')} label={'All'} />
+				<RadioButton selected={typeFilterMode === 'inc'} onPress={() => setTypeFilter('inc')} label={'Income'} />
+				<RadioButton selected={typeFilterMode === 'exp'} onPress={() => setTypeFilter('exp')} label={'Expence'} />
 			</RadioGroup>
-			<FlatList style={_s.list} data={data} keyExtractor={({ index }) => index} renderItem={({ item }) => <ListItem data={item} />} />
+			<FlatList
+				initialNumToRender={8}
+				// viewabilityConfig={viewabilityConfig}
+				style={_s.list}
+				data={dataset}
+				keyExtractor={(item) => item.id}
+				renderItem={({ item }) => (
+					<ListItem data={item} typeFilterMode={typeFilterMode} condition={item.type === typeFilterMode || typeFilterMode === 'all'} />
+				)}
+			/>
 		</View>
 	);
 }
