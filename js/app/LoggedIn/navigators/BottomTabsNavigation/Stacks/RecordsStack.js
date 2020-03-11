@@ -6,6 +6,7 @@ import AddNewRecordScreen from '../../../screens/RecordsStack/AddNewRecordScreen
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { scale } from 'react-native-size-matters';
+import _c from '../../../../../uiConfig/colors';
 
 export default function RecordsStack ({ navigation, route }) {
 	const Stack = createStackNavigator();
@@ -20,12 +21,12 @@ export default function RecordsStack ({ navigation, route }) {
 				options={() => {
 					return {
 						title: 'Records list',
-						headerTintColor: 'blue',
+						headerTintColor: _c.red,
 						headerRight: () => (
 							<TouchableOpacity
 								style={{ marginHorizontal: scale(8) }}
 								onPress={() => navigation.navigate('AddNewRecordScreen')}
-								children={<Ionicons size={scale(25)} name={'md-add'} color={'blue'} />}
+								children={<Ionicons size={scale(25)} name={'md-add'} color={_c.red} />}
 							/>
 						)
 					};

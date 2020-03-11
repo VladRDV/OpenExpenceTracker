@@ -7,6 +7,7 @@ import { scale } from 'react-native-size-matters';
 import keygen from '../../../../../utils/keygen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
+import _c from '../../../../../uiConfig/colors';
 
 export default function RecordListScreen ({ navigation }) {
 	const [ typeFilterMode, setTypeFilter ] = useState('all');
@@ -85,12 +86,12 @@ export default function RecordListScreen ({ navigation }) {
 							<TouchableOpacity
 								style={{ marginHorizontal: scale(8) }}
 								onPress={() => toggleSelectDeleteMode(true)}
-								children={<Feather size={scale(25)} name={'edit'} color={'blue'} />}
+								children={<Feather size={scale(25)} name={'edit'} color={_c.red} />}
 							/>
 							<TouchableOpacity
 								style={{ marginHorizontal: scale(8) }}
 								onPress={() => toggleCategoryFilter(true)}
-								children={<MaterialIcons size={scale(25)} name={'filter-list'} color={'blue'} />}
+								children={<MaterialIcons size={scale(25)} name={'filter-list'} color={_c.red} />}
 							/>
 						</View>
 					);
@@ -110,9 +111,27 @@ export default function RecordListScreen ({ navigation }) {
 				<Text>ifdlhsgoiudfghd</Text>
 			</Dialog>
 			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
-				<RadioButton selected={typeFilterMode === 'all'} onPress={() => setTypeFilter('all')} label={'All'} />
-				<RadioButton selected={typeFilterMode === 'inc'} onPress={() => setTypeFilter('inc')} label={'Income'} />
-				<RadioButton selected={typeFilterMode === 'exp'} onPress={() => setTypeFilter('exp')} label={'Expence'} />
+				<RadioButton
+					color={_c.tomato}
+					labelStyle={{ color: _c.dSkyblue }}
+					selected={typeFilterMode === 'all'}
+					onPress={() => setTypeFilter('all')}
+					label={'All'}
+				/>
+				<RadioButton
+					color={_c.tomato}
+					labelStyle={{ color: _c.dSkyblue }}
+					selected={typeFilterMode === 'inc'}
+					onPress={() => setTypeFilter('inc')}
+					label={'Income'}
+				/>
+				<RadioButton
+					color={_c.tomato}
+					labelStyle={{ color: _c.dSkyblue }}
+					selected={typeFilterMode === 'exp'}
+					onPress={() => setTypeFilter('exp')}
+					label={'Expence'}
+				/>
 			</RadioGroup>
 			<FlatList
 				initialNumToRender={8}

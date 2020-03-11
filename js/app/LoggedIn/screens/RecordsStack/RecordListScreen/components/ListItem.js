@@ -4,7 +4,7 @@ import { StyleSheet, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { scale } from 'react-native-size-matters';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
+import _c from '../../../../../../uiConfig/colors';
 export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	const typeColor = data.type === 'inc' ? Colors.green30 : Colors.red30;
 	const fadeIn = AnimatableManager.presets.fadeIn;
@@ -37,7 +37,7 @@ export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	// const animation = condition ? _in : _out;
 	// const imageAnimationProps = AnimatableManager.getRandomDelay();
 	const arrow = data.type === 'inc' ? 'arrowup' : 'arrowdown';
-	const arrowColor = data.type === 'inc' ? 'lightgreen' : 'tomato';
+	const arrowColor = data.type === 'inc' ? _c.lGreen : _c.tomato;
 	if (condition) {
 		return (
 			<Animatable.View {...fadeIn}>

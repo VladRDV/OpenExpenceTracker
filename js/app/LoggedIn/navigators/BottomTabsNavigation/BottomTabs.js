@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { scale } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
+import _c from '../../../../uiConfig/colors';
 
 import RecordsStack from './Stacks/RecordsStack';
 import SettingsStack from './Stacks/SettingsStack';
@@ -12,25 +13,29 @@ import StatisticsStack from './Stacks/StatisticsStack';
 export default function BottomTabs ({ navigation }) {
 	const Tabs = createMaterialBottomTabNavigator();
 	const { Navigator, Screen } = Tabs;
-	const icon_size = scale(20);
+	const iconProps = {
+		tyle: _s.icon,
+		size: scale(20),
+		color: _c.white
+	};
 	return (
 		<Navigator shifting initialRouteName="RecordsStack">
 			<Screen
 				name="RecordsStack"
 				component={RecordsStack}
 				options={{
-					tabBarColor: 'tomato',
+					tabBarColor: _c.tomato,
 					tabBarLabel: 'Home',
-					tabBarIcon: () => <Ionicons style={_s.icon} size={icon_size} name={'ios-home'} />
+					tabBarIcon: () => <Ionicons {...iconProps} name={'ios-home'} />
 				}}
 			/>
 			<Screen
 				name="Statistics"
 				component={StatisticsStack}
 				options={{
-					tabBarColor: '#ff9944',
+					tabBarColor: _c.orange,
 					tabBarLabel: 'Statistics',
-					tabBarIcon: () => <Entypo style={_s.icon} size={icon_size} name={'pie-chart'} />
+					tabBarIcon: () => <Entypo {...iconProps} name={'pie-chart'} />
 				}}
 			/>
 
@@ -38,9 +43,9 @@ export default function BottomTabs ({ navigation }) {
 				name="Settings"
 				component={SettingsStack}
 				options={{
-					tabBarColor: '#99aaff',
+					tabBarColor: _c.jogurt,
 					tabBarLabel: 'Settings',
-					tabBarIcon: () => <Ionicons style={_s.icon} size={icon_size} name={'ios-settings'} />
+					tabBarIcon: () => <Ionicons {...iconProps} name={'ios-settings'} />
 				}}
 			/>
 		</Navigator>

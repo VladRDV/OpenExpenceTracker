@@ -13,8 +13,7 @@ import 'react-native-gesture-handler';
 import SplashScreen from './components/SplashScreen';
 import { DEV_MODE } from 'react-native-dotenv';
 
-console.log(DEV_MODE, 'AAAAAAAAAAAAAAAAAAAAAAA', typeof DEV_MODE);
-if (DEV_MODE) {
+if (!!DEV_MODE) {
 	const whyDidYouRender = require('@welldone-software/why-did-you-render');
 	const ReactRedux = require('react-redux');
 	whyDidYouRender(React, {
