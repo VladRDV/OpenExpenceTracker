@@ -10,13 +10,15 @@ import { testAction } from '../redux/actions/test_action';
 import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
-
+import { SafeAreaProvider, initialWindowSafeAreaInsets } from 'react-native-safe-area-context';
 import LoggedInStack from './LoggedIn/navigators/LoggedInStack';
-import LoggedOutStack from './LoggedOut/navigators/LoggedOutStack';
+// import LoggedOutStack from './LoggedOut/navigators/LoggedOutStack';
 
-const OpenExpenceTracker = (props) => {
-	return <NavigationContainer>{createRootNavigation()}</NavigationContainer>;
-};
+const OpenExpenceTracker = () => (
+	<SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
+		<NavigationContainer>{createRootNavigation()}</NavigationContainer>
+	</SafeAreaProvider>
+);
 
 function createRootNavigation () {
 	// if (1) {

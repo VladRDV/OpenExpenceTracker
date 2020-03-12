@@ -8,6 +8,7 @@ const _c = {
 	white: '#fff',
 	black: '#000',
 	orange: '#ff9944',
-	jogurt: '#99aaff'
+	jogurt: '#99aaff',
+	lGrey: '#cfcfcf'
 };
 export default _c;

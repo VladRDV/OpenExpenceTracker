@@ -1,12 +1,12 @@
 import React from 'react';
-import { AnimatableManager, ThemeManager, Colors, BorderRadiuses, ListItem, Text } from 'react-native-ui-lib'; //eslint-disable-line
-import { StyleSheet, Alert } from 'react-native';
+import { AnimatableManager, Colors, ListItem, Text } from 'react-native-ui-lib'; //eslint-disable-line
 import * as Animatable from 'react-native-animatable';
-import { scale } from 'react-native-size-matters';
+import { scale, ScaledSheet } from 'react-native-size-matters';
+import { StyleSheet } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import _c from '../../../../../../uiConfig/colors';
 export default function RecordListScreen ({ data, condition, typeFilterMode }) {
-	const typeColor = data.type === 'inc' ? Colors.green30 : Colors.red30;
+	const typeColor = data.type === 'inc' ? _c.lGreen : _c.tomato;
 	const fadeIn = AnimatableManager.presets.fadeIn;
 	// const fadeOut = AnimatableManager.presets.fadeOut;
 	// const _out = {
@@ -41,25 +41,25 @@ export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	if (condition) {
 		return (
 			<Animatable.View {...fadeIn}>
-				<ListItem activeBackgroundColor={Colors.dark60} height={scale(70)} activeOpacity={0.3} onPress={() => Alert.alert(`pressed on record`)}>
-					<ListItem.Part left>
+				<ListItem activeBackgroundColor={_c.white} height={scale(70)} activeOpacity={0.3}>
+					<ListItem.Part left containerStyle={_s.border}>
 						<AntDesign style={_s.arrow} name={arrow} size={scale(30)} color={arrowColor} />
 					</ListItem.Part>
-					<ListItem.Part middle column containerStyle={[ _s.border, { paddingRight: 17 } ]}>
-						<ListItem.Part containerStyle={{ marginBottom: 3 }}>
-							<Text dark10 text70 style={{ flex: 1, marginRight: 10 }} numberOfLines={1}>
-								{data.type}
+					<ListItem.Part middle column containerStyle={{ ..._s.border, paddingRight: scale(17) }}>
+						<ListItem.Part containerStyle={_s.titleAmmount}>
+							<Text dark10 text70 style={_s.title} numberOfLines={1}>
+								{data.title}
 							</Text>
-							<Text dark10 text70 style={{ marginTop: 2 }}>
+							<Text dark10 text70 style={_s.mt}>
 								{data.ammount}
 							</Text>
 						</ListItem.Part>
 						<ListItem.Part>
-							<Text style={{ flex: 1, marginRight: 10 }} text90 dark40 numberOfLines={1}>
+							<Text style={_s.date} text90 dark40 numberOfLines={1}>
 								{data.date}
 							</Text>
 							<Text text90 color={typeColor} numberOfLines={1}>
-								{data.title}
+								{data.category}
 							</Text>
 						</ListItem.Part>
 					</ListItem.Part>
@@ -71,14 +71,28 @@ export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	}
 }
 
-const _s = StyleSheet.create({
+const _s = ScaledSheet.create({
 	arrow: {
-		width: scale(30),
-		height: scale(30),
-		marginHorizontal: 14
+		width: '30@s',
+		height: '30@s',
+		marginHorizontal: '14@sr'
 	},
-	border: {
+	titleAmmount: {
+		marginBottom: '3@sr'
+	},
+	mid: {
 		borderBottomWidth: StyleSheet.hairlineWidth,
-		borderColor: ThemeManager.dividerColor
+		borderColor: _c.lGrey
+	},
+	date: {
+		flex: 1,
+		marginRight: '10@s'
+	},
+	mt: {
+		marginTop: '2@sr'
+	},
+	title: {
+		flex: 1,
+		marginRight: '10@sr'
 	}
 });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
-import { View, Button, RadioButton, RadioGroup, Dialog, TouchableOpacity, Text } from 'react-native-ui-lib';
+import { FlatList, StyleSheet, StatusBar, Platform } from 'react-native';
+import { View, RadioButton, RadioGroup, Dialog, TouchableOpacity, Text } from 'react-native-ui-lib';
 import ListItem from './components/ListItem';
 // import { moment } from 'moment';
 import { scale } from 'react-native-size-matters';
@@ -8,6 +8,7 @@ import keygen from '../../../../../utils/keygen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import _c from '../../../../../uiConfig/colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RecordListScreen ({ navigation }) {
 	const [ typeFilterMode, setTypeFilter ] = useState('all');
@@ -15,65 +16,65 @@ export default function RecordListScreen ({ navigation }) {
 	const [ itemsToDelete, setItemsToDelete ] = useState(false);
 	const [ categoryFilterOn, toggleCategoryFilter ] = useState(false);
 	const data = [
-		{ date: '20-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '22-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '22-12-2020', ammount: '1200$', type: 'exp', title: 'payday', id: keygen() },
-		{ date: '22-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '22-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '24-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'exp', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '27-12-2020', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '28-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '20-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', category: 'drinks', ammount: '1200$', type: 'exp', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '22-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '24-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'food', ammount: '120$', type: 'exp', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '27-12-2020', category: 'job', ammount: '120$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '28-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() },
 
-		{ date: '30-12-2020', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() }
+		{ date: '30-12-2020', category: 'job', ammount: '1200$', type: 'inc', title: 'payday', id: keygen() }
 	];
 	const [ dataset, changedataset ] = useState(data);
 
@@ -147,6 +148,7 @@ export default function RecordListScreen ({ navigation }) {
 		</View>
 	);
 }
+
 RecordListScreen.whyDidYouRender = {
 	logOnDifferentValues: true,
 	customName: 'lista zapisa'
@@ -160,6 +162,7 @@ const _s = StyleSheet.create({
 	container: {
 		justifyContent: 'flex-start',
 		flex: 1
+		// backgroundColor: 'red'
 	},
 	filter: {
 		flex: 0.08,
