@@ -13,12 +13,14 @@ export default function StatisticsStack () {
 			statusBarProps={{
 				barStyle: 'light-content'
 			}}>
-			<Navigator>
+			<Navigator
+				screenOptions={{
+					safeAreaInsets: { top: 0 }
+				}}>
 				<Screen
 					name="StatisticsScreen"
 					options={{
-						title: 'Statistics',
-						safeAreaInsets: { top: 0 }
+						title: 'Statistics'
 					}}
 					component={StatisticsScreen}
 				/>

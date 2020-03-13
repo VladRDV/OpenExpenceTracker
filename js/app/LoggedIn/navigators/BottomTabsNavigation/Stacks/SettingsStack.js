@@ -13,12 +13,14 @@ export default function SettingsStack () {
 			statusBarProps={{
 				barStyle: 'light-content'
 			}}>
-			<Navigator>
+			<Navigator
+				screenOptions={{
+					safeAreaInsets: { top: 0 }
+				}}>
 				<Screen
 					name="SettingsScreen"
 					options={{
-						title: 'Settings',
-						safeAreaInsets: { top: 0 }
+						title: 'Settings'
 					}}
 					component={SettingsScreen}
 				/>

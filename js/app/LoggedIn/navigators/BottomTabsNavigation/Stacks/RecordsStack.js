@@ -12,13 +12,17 @@ import TopBarPaint from '../components/TopBarPaint';
 export default function RecordsStack ({ navigation, route }) {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
+	console.log(navigation, route, 'AAAAAAÀ');
 	return (
 		<TopBarPaint
 			color={_c.tomato}
 			statusBarProps={{
 				barStyle: 'light-content'
 			}}>
-			<Navigator>
+			<Navigator
+				screenOptions={{
+					safeAreaInsets: { top: 0 }
+				}}>
 				<Screen
 					name="RecordListScreen"
 					component={RecordListScreen}
@@ -26,7 +30,6 @@ export default function RecordsStack ({ navigation, route }) {
 						return {
 							title: 'Records list',
 							headerTintColor: _c.red,
-							safeAreaInsets: { top: 0 },
 							headerRight: () => (
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}

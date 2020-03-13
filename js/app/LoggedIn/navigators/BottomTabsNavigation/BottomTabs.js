@@ -19,7 +19,13 @@ export default function BottomTabs ({ navigation }) {
 		color: _c.white
 	};
 	return (
-		<Navigator shifting initialRouteName="RecordsStack">
+		<Navigator
+			tabBarOptions={{
+				allowFontScaling: false,
+				keyboardHidesTabBar: true
+			}}
+			shifting
+			initialRouteName="RecordsStack">
 			<Screen
 				name="RecordsStack"
 				component={RecordsStack}

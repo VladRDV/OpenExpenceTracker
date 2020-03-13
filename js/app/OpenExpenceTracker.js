@@ -4,21 +4,13 @@
  **/
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet } from 'react-native';
 import { testAction } from '../redux/actions/test_action';
 import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaProvider, initialWindowSafeAreaInsets } from 'react-native-safe-area-context';
 import LoggedInStack from './LoggedIn/navigators/LoggedInStack';
 // import LoggedOutStack from './LoggedOut/navigators/LoggedOutStack';
 
-const OpenExpenceTracker = () => (
-	<SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
-		<NavigationContainer>{createRootNavigation()}</NavigationContainer>
-	</SafeAreaProvider>
-);
+const OpenExpenceTracker = () => <NavigationContainer children={createRootNavigation()} />;
 
 function createRootNavigation () {
 	// if (1) {
@@ -27,14 +19,6 @@ function createRootNavigation () {
 	// 	return <LoggedOutStack />;
 	// }
 }
-
-OpenExpenceTracker.propTypes = {
-	test_state: PropTypes.string
-};
-
-const _s = StyleSheet.create({
-	oet: { flex: 1 }
-});
 
 const mapStateToProps = ({ test_reducer }) => {
 	return {

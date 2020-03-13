@@ -1,6 +1,6 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, StatusBar, Platform } from 'react-native';
-import { View, RadioButton, RadioGroup, Dialog, TouchableOpacity, Text } from 'react-native-ui-lib';
+import { View, RadioButton, RadioGroup, TouchableOpacity, Text } from 'react-native-ui-lib';
 import ListItem from './components/ListItem';
 // import { moment } from 'moment';
 import { scale } from 'react-native-size-matters';
@@ -8,7 +8,7 @@ import keygen from '../../../../../utils/keygen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import _c from '../../../../../uiConfig/colors';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import CategoryPicker from './components/CategoryPicker';
 
 export default function RecordListScreen ({ navigation }) {
 	const [ typeFilterMode, setTypeFilter ] = useState('all');
@@ -108,9 +108,7 @@ export default function RecordListScreen ({ navigation }) {
 
 	return (
 		<View style={_s.container}>
-			<Dialog visible={categoryFilterOn} useSafeArea heipanDirection={'down'} onDismiss={() => toggleCategoryFilter(false)} height={100}>
-				<Text>ifdlhsgoiudfghd</Text>
-			</Dialog>
+			<CategoryPicker visible={categoryFilterOn} toggle={toggleCategoryFilter} />
 			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
 				<RadioButton
 					color={_c.tomato}
