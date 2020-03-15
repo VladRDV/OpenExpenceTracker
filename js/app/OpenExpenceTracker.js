@@ -4,13 +4,18 @@
  **/
 
 import React from 'react';
-import { testAction } from '../redux/actions/test_action';
-import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import LoggedInStack from './LoggedIn/navigators/LoggedInStack';
 // import LoggedOutStack from './LoggedOut/navigators/LoggedOutStack';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-const OpenExpenceTracker = () => <NavigationContainer children={createRootNavigation()} />;
+export default function OpenExpenceTracker () {
+	return (
+		<SafeAreaProvider>
+			<NavigationContainer children={createRootNavigation()} />
+		</SafeAreaProvider>
+	);
+}
 
 function createRootNavigation () {
 	// if (1) {
@@ -19,13 +24,3 @@ function createRootNavigation () {
 	// 	return <LoggedOutStack />;
 	// }
 }
-
-const mapStateToProps = ({ test_reducer }) => {
-	return {
-		test_state: test_reducer.test_state
-	};
-};
-const mapDispatchToProps = (dispatch) => ({
-	testAction: (data) => dispatch(testAction(data))
-});
-export default connect(mapStateToProps, mapDispatchToProps)(OpenExpenceTracker);

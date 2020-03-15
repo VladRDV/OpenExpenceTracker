@@ -22,7 +22,7 @@ export default function BottomTabs ({ navigation }) {
 		<Navigator
 			tabBarOptions={{
 				allowFontScaling: false,
-				keyboardHidesTabBar: true
+				keyboardHidesTabBar: false
 			}}
 			shifting
 			initialRouteName="RecordsStack">

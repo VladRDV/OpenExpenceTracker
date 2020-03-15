@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import test_reducer from './reducers/test_reducer';
+import recordsStack from './reducers/recordsStack';
 export default combineReducers({
-	test_reducer
+	recordsStack
 });
