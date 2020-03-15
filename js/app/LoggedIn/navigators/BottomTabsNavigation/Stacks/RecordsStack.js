@@ -15,7 +15,7 @@ export default function RecordsStack ({ navigation, route }) {
 	const { Navigator, Screen } = Stack;
 	return (
 		<TopBarPaint
-			color={_c.tomato}
+			color={_c.dSkyblue}
 			statusBarProps={{
 				barStyle: 'light-content'
 			}}>
@@ -32,12 +32,12 @@ export default function RecordsStack ({ navigation, route }) {
 					options={() => {
 						return {
 							title: 'Records list',
-							headerTintColor: _c.red,
+							headerTintColor: _c.dSkyblue,
 							headerRight: () => (
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.navigate('AddNewRecordScreen')}
-									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.red} />}
+									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.dSkyblue} />}
 								/>
 							)
 						};
@@ -49,12 +49,12 @@ export default function RecordsStack ({ navigation, route }) {
 					options={() => {
 						return {
 							title: 'Records details',
-							headerTintColor: _c.red,
+							headerTintColor: _c.dSkyblue,
 							headerRight: () => (
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}
 									onPress={navigation.goBack}
-									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.red} />}
+									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.dSkyblue} />}
 								/>
 							)
 						};
@@ -66,12 +66,12 @@ export default function RecordsStack ({ navigation, route }) {
 					options={() => {
 						return {
 							title: 'Create new record',
-							headerTintColor: _c.red,
+							headerTintColor: _c.dSkyblue,
 							headerLeft: () => (
 								<TouchableOpacity
 									// style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.push('RecordListScreen')}
-									children={<MaterialIcons size={scale(40)} name={'chevron-left'} color={_c.red} />}
+									children={<MaterialIcons size={scale(40)} name={'chevron-left'} color={_c.dSkyblue} />}
 								/>
 							),
 							headerRight: () => null

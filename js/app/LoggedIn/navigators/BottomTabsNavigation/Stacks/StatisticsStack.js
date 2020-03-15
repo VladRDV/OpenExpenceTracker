@@ -9,7 +9,7 @@ export default function StatisticsStack () {
 	const { Navigator, Screen } = Stack;
 	return (
 		<TopBarPaint
-			color={_c.orange}
+			color={_c.salad}
 			statusBarProps={{
 				barStyle: 'light-content'
 			}}>

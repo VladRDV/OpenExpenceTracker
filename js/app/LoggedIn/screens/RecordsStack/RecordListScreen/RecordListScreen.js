@@ -35,7 +35,7 @@ function RecordListScreen ({ navigation, list }) {
 							<TouchableOpacity
 								style={{ marginHorizontal: scale(8) }}
 								onPress={() => toggleSelectDeleteMode(true)}
-								children={<Feather size={scale(25)} name={'edit'} color={_c.red} />}
+								children={<Feather size={scale(25)} name={'edit'} color={_c.dSkyblue} />}
 							/>
 							<CategoryPicker arr={categories} toggleStatusBarStyle={toggleStatusBarStyle} />
 						</View>
@@ -50,22 +50,22 @@ function RecordListScreen ({ navigation, list }) {
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
 			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
 				<RadioButton
-					color={_c.tomato}
-					labelStyle={{ color: _c.dSkyblue }}
+					color={_c.dSkyblue}
+					labelStyle={{ color: _c.black }}
 					selected={typeFilterMode === 'all'}
 					onPress={() => setTypeFilter('all')}
 					label={'All'}
 				/>
 				<RadioButton
-					color={_c.tomato}
-					labelStyle={{ color: _c.dSkyblue }}
+					color={_c.dSkyblue}
+					labelStyle={{ color: _c.black }}
 					selected={typeFilterMode === 'inc'}
 					onPress={() => setTypeFilter('inc')}
 					label={'Income'}
 				/>
 				<RadioButton
-					color={_c.tomato}
-					labelStyle={{ color: _c.dSkyblue }}
+					color={_c.dSkyblue}
+					labelStyle={{ color: _c.black }}
 					selected={typeFilterMode === 'exp'}
 					onPress={() => setTypeFilter('exp')}
 					label={'Expence'}

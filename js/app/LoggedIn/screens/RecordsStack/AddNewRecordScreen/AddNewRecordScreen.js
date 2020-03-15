@@ -12,8 +12,8 @@ export default function AddNewRecordScreen ({ navigation }) {
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
 			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
 				<RadioButton
-					color={_c.lGreen}
-					labelStyle={{ color: _c.lGreen }}
+					color={_c.green}
+					labelStyle={{ color: _c.green }}
 					selected={typeFilterMode === 'inc'}
 					onPress={() => setTypeFilter('inc')}
 					label={'Income'}

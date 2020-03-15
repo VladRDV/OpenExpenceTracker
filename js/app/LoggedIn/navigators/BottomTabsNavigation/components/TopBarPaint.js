@@ -8,7 +8,7 @@ export default function TopBarPaint ({ children, color, statusBarProps }) {
 		<SafeAreaView style={[ _s.sa, _bc ]}>
 			<SafeAreaView style={[ _s.topSafeArea, _bc ]} />
 			<SafeAreaView style={[ _s.sa, _bc ]}>
-				<StatusBar {...statusBarProps} />
+				<StatusBar {...statusBarProps} backgroundColor={color} />
 				{children}
 			</SafeAreaView>
 		</SafeAreaView>

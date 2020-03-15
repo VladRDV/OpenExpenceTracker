@@ -30,7 +30,7 @@ export default function BottomTabs ({ navigation }) {
 				name="RecordsStack"
 				component={RecordsStack}
 				options={{
-					tabBarColor: _c.tomato,
+					tabBarColor: _c.dSkyblue,
 					tabBarLabel: 'Home',
 					tabBarIcon: () => <Ionicons {...iconProps} name={'ios-home'} />
 				}}
@@ -39,7 +39,7 @@ export default function BottomTabs ({ navigation }) {
 				name="Statistics"
 				component={StatisticsStack}
 				options={{
-					tabBarColor: _c.orange,
+					tabBarColor: _c.salad,
 					tabBarLabel: 'Statistics',
 					tabBarIcon: () => <Entypo {...iconProps} name={'pie-chart'} />
 				}}

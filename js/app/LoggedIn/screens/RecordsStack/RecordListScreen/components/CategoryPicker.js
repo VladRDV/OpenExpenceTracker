@@ -9,7 +9,7 @@ export default function CategoryPicker ({ toggleStatusBarStyle, arr, select, tog
 		<Picker
 			renderPicker={() => (
 				<View style={{ marginHorizontal: scale(8) }}>
-					<MaterialIcons size={scale(25)} name={'filter-list'} color={_c.red} />
+					<MaterialIcons size={scale(25)} name={'filter-list'} color={_c.dSkyblue} />
 				</View>
 			)}
 			placeholder="Favorite Language"
