@@ -1,15 +1,17 @@
 import React from 'react';
 import { Colors, View, Picker, Button } from 'react-native-ui-lib';
 import { scale } from 'react-native-size-matters';
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import _c from '../../../../../../uiConfig/colors';
+
+import _c from '../../../../../../../../uiConfig/colors';
 
 export default function CategoryPicker ({ toggleStatusBarStyle, arr, select, toggle }) {
 	return (
 		<Picker
 			renderPicker={() => (
 				<View style={{ marginHorizontal: scale(8) }}>
-					<MaterialIcons size={scale(25)} name={'filter-list'} color={_c.dSkyblue} />
+					<MaterialIcons size={scale(25)} name={'filter-list'} color={_c.salad} />
 				</View>
 			)}
 			placeholder="Favorite Language"

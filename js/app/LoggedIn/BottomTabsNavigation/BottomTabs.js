@@ -4,11 +4,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { scale } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
-import _c from '../../../../uiConfig/colors';
+import _c from '../../../uiConfig/colors';
 
-import RecordsStack from './Stacks/RecordsStack';
-import SettingsStack from './Stacks/SettingsStack';
-import StatisticsStack from './Stacks/StatisticsStack';
+import RecordsStack from './Stacks/RecordsStack/RecordsStack';
+import SettingsStack from './Stacks/SettingsStack/SettingsStack';
+import StatisticsStack from './Stacks/StatisticsStack/StatisticsStack';
 
 export default function BottomTabs ({ navigation }) {
 	const Tabs = createMaterialBottomTabNavigator();
@@ -30,7 +30,7 @@ export default function BottomTabs ({ navigation }) {
 				name="RecordsStack"
 				component={RecordsStack}
 				options={{
-					tabBarColor: _c.dSkyblue,
+					tabBarColor: _c.salad,
 					tabBarLabel: 'Home',
 					tabBarIcon: () => <Ionicons {...iconProps} name={'ios-home'} />
 				}}
@@ -39,7 +39,7 @@ export default function BottomTabs ({ navigation }) {
 				name="Statistics"
 				component={StatisticsStack}
 				options={{
-					tabBarColor: _c.salad,
+					tabBarColor: _c.dSkyblue,
 					tabBarLabel: 'Statistics',
 					tabBarIcon: () => <Entypo {...iconProps} name={'pie-chart'} />
 				}}

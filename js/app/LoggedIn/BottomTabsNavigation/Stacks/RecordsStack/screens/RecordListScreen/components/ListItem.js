@@ -3,8 +3,10 @@ import { AnimatableManager, Colors, ListItem, Text } from 'react-native-ui-lib';
 import * as Animatable from 'react-native-animatable';
 import { scale, ScaledSheet } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import _c from '../../../../../../uiConfig/colors';
+import _c from '../../../../../../../../uiConfig/colors';
+
 export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	const typeColor = data.type === 'inc' ? _c.lGreen : _c.tomato;
 	const fadeIn = AnimatableManager.presets.fadeIn;

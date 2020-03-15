@@ -1,21 +1,24 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import RecordListScreen from '../../../screens/RecordsStack/RecordListScreen/RecordListScreen';
-import RedordDetailsScreen from '../../../screens/RecordsStack/RedordDetailsScreen';
-import AddNewRecordScreen from '../../../screens/RecordsStack/AddNewRecordScreen/AddNewRecordScreen';
 import { TouchableOpacity } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import RecordListScreen from './screens/RecordListScreen/RecordListScreen';
+import RedordDetailsScreen from './screens/RedordDetailsScreen';
+import AddNewRecordScreen from './screens/AddNewRecordScreen/AddNewRecordScreen';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale } from 'react-native-size-matters';
+
 import _c from '../../../../../uiConfig/colors';
-import TopBarPaint from '../components/TopBarPaint';
+import TopBarPaint from '../../components/TopBarPaint';
 
 export default function RecordsStack ({ navigation, route }) {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
 	return (
 		<TopBarPaint
-			color={_c.dSkyblue}
+			color={_c.salad}
 			statusBarProps={{
 				barStyle: 'light-content'
 			}}>
@@ -32,12 +35,12 @@ export default function RecordsStack ({ navigation, route }) {
 					options={() => {
 						return {
 							title: 'Records list',
-							headerTintColor: _c.dSkyblue,
+							headerTintColor: _c.black,
 							headerRight: () => (
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.navigate('AddNewRecordScreen')}
-									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.dSkyblue} />}
+									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.salad} />}
 								/>
 							)
 						};
@@ -49,7 +52,7 @@ export default function RecordsStack ({ navigation, route }) {
 					options={() => {
 						return {
 							title: 'Records details',
-							headerTintColor: _c.dSkyblue,
+							headerTintColor: _c.black,
 							headerRight: () => (
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}
@@ -66,12 +69,12 @@ export default function RecordsStack ({ navigation, route }) {
 					options={() => {
 						return {
 							title: 'Create new record',
-							headerTintColor: _c.dSkyblue,
+							headerTintColor: _c.black,
 							headerLeft: () => (
 								<TouchableOpacity
 									// style={{ marginHorizontal: scale(8) }}
-									onPress={() => navigation.push('RecordListScreen')}
-									children={<MaterialIcons size={scale(40)} name={'chevron-left'} color={_c.dSkyblue} />}
+									onPress={() => navigation.navigate('RecordListScreen')}
+									children={<MaterialIcons size={scale(40)} name={'chevron-left'} color={_c.salad} />}
 								/>
 							),
 							headerRight: () => null

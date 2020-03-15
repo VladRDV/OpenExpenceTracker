@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SettingsScreen from '../../../screens/SettingsStack/SettingsScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import _c from '../../../../../uiConfig/colors';
-import TopBarPaint from '../components/TopBarPaint';
+import { scale } from 'react-native-size-matters';
+import TopBarPaint from '../../components/TopBarPaint';
 
 export default function SettingsStack () {
 	const Stack = createStackNavigator();
@@ -15,7 +16,10 @@ export default function SettingsStack () {
 			}}>
 			<Navigator
 				screenOptions={{
-					safeAreaInsets: { top: 0 }
+					safeAreaInsets: { top: 0 },
+					headerStyle: {
+						height: scale(50)
+					}
 				}}>
 				<Screen
 					name="SettingsScreen"

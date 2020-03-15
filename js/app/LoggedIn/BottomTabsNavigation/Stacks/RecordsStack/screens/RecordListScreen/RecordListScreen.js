@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, StatusBar } from 'react-native';
 import { View, RadioButton, RadioGroup, TouchableOpacity } from 'react-native-ui-lib';
-import ListItem from './components/ListItem';
 // import { moment } from 'moment';
-import { scale } from 'react-native-size-matters';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Feather from 'react-native-vector-icons/Feather';
-import _c from '../../../../../uiConfig/colors';
-import CategoryPicker from './components/CategoryPicker';
 import { connect } from 'react-redux';
+import { scale } from 'react-native-size-matters';
+
+import Feather from 'react-native-vector-icons/Feather';
+import _c from '../../../../../../../uiConfig/colors';
+
+import ListItem from './components/ListItem';
+import CategoryPicker from './components/CategoryPicker';
 
 function RecordListScreen ({ navigation, list }) {
 	const [ typeFilterMode, setTypeFilter ] = useState('all');
@@ -35,7 +36,7 @@ function RecordListScreen ({ navigation, list }) {
 							<TouchableOpacity
 								style={{ marginHorizontal: scale(8) }}
 								onPress={() => toggleSelectDeleteMode(true)}
-								children={<Feather size={scale(25)} name={'edit'} color={_c.dSkyblue} />}
+								children={<Feather size={scale(25)} name={'edit'} color={_c.salad} />}
 							/>
 							<CategoryPicker arr={categories} toggleStatusBarStyle={toggleStatusBarStyle} />
 						</View>
@@ -50,21 +51,21 @@ function RecordListScreen ({ navigation, list }) {
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
 			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
 				<RadioButton
-					color={_c.dSkyblue}
+					color={_c.salad}
 					labelStyle={{ color: _c.black }}
 					selected={typeFilterMode === 'all'}
 					onPress={() => setTypeFilter('all')}
 					label={'All'}
 				/>
 				<RadioButton
-					color={_c.dSkyblue}
+					color={_c.salad}
 					labelStyle={{ color: _c.black }}
 					selected={typeFilterMode === 'inc'}
 					onPress={() => setTypeFilter('inc')}
 					label={'Income'}
 				/>
 				<RadioButton
-					color={_c.dSkyblue}
+					color={_c.salad}
 					labelStyle={{ color: _c.black }}
 					selected={typeFilterMode === 'exp'}
 					onPress={() => setTypeFilter('exp')}
