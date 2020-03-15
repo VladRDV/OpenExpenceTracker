@@ -8,7 +8,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import _c from '../../../../../../../../uiConfig/colors';
 
 export default function RecordListScreen ({ data, condition, typeFilterMode }) {
-	const typeColor = data.type === 'inc' ? _c.lGreen : _c.tomato;
+	const typeColor = data.type === 'inc' ? _c.lGreen : _c.lGrey;
 	const fadeIn = AnimatableManager.presets.fadeIn;
 	// const fadeOut = AnimatableManager.presets.fadeOut;
 	// const _out = {
@@ -39,7 +39,7 @@ export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	// const animation = condition ? _in : _out;
 	// const imageAnimationProps = AnimatableManager.getRandomDelay();
 	const arrow = data.type === 'inc' ? 'arrowup' : 'arrowdown';
-	const arrowColor = data.type === 'inc' ? _c.lGreen : _c.tomato;
+	const arrowColor = data.type === 'inc' ? _c.lGreen : _c.lGrey;
 	if (condition) {
 		return (
 			<Animatable.View {...fadeIn}>

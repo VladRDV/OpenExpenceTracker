@@ -6,9 +6,9 @@ import { scale } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
 import _c from '../../../uiConfig/colors';
 
-import RecordsStack from './Stacks/RecordsStack/RecordsStack';
-import SettingsStack from './Stacks/SettingsStack/SettingsStack';
-import StatisticsStack from './Stacks/StatisticsStack/StatisticsStack';
+import RecordsStack from './NavigationStacks/RecordsStack/RecordsStack';
+import SettingsStack from './NavigationStacks/SettingsStack/SettingsStack';
+import StatisticsStack from './NavigationStacks/StatisticsStack/StatisticsStack';
 
 export default function BottomTabs ({ navigation }) {
 	const Tabs = createMaterialBottomTabNavigator();

@@ -11,13 +11,13 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale } from 'react-native-size-matters';
 
 import _c from '../../../../../uiConfig/colors';
-import TopBarPaint from '../../components/TopBarPaint';
+import StatusBarPaint from '../../components/StatusBarPaint';
 
 export default function RecordsStack ({ navigation, route }) {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
 	return (
-		<TopBarPaint
+		<StatusBarPaint
 			color={_c.salad}
 			statusBarProps={{
 				barStyle: 'light-content'
@@ -82,6 +82,6 @@ export default function RecordsStack ({ navigation, route }) {
 					}}
 				/>
 			</Navigator>
-		</TopBarPaint>
+		</StatusBarPaint>
 	);
 }

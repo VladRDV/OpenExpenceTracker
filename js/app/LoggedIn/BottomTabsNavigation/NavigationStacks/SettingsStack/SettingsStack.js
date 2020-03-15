@@ -1,15 +1,15 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SettingsScreen from './screens/SettingsScreen';
+import SettingsScreen from './screens/SettingsScreen/SettingsScreen';
 import _c from '../../../../../uiConfig/colors';
 import { scale } from 'react-native-size-matters';
-import TopBarPaint from '../../components/TopBarPaint';
+import StatusBarPaint from '../../components/StatusBarPaint';
 
 export default function SettingsStack () {
 	const Stack = createStackNavigator();
 	const { Navigator, Screen } = Stack;
 	return (
-		<TopBarPaint
+		<StatusBarPaint
 			color={_c.jogurt}
 			statusBarProps={{
 				barStyle: 'light-content'
@@ -29,6 +29,6 @@ export default function SettingsStack () {
 					component={SettingsScreen}
 				/>
 			</Navigator>
-		</TopBarPaint>
+		</StatusBarPaint>
 	);
 }

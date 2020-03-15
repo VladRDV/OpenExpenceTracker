@@ -3,7 +3,7 @@ const _c = {
 	green: '#009900',
 	tomato: 'tomato',
 	dSkyblue: '#009eee',
-	salad: '#00dda6',
+	salad: '#00cc51',
 	errorColor: '#E63B2E',
 	lGreen: 'lightgreen',
 	red: '#ff003b',

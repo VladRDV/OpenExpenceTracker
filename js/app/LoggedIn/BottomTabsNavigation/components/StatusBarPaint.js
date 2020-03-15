@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { StyleSheet, StatusBar } from 'react-native';
 
-export default function TopBarPaint ({ children, color, statusBarProps }) {
+export default function StatusBarPaint ({ children, color, statusBarProps }) {
 	const _bc = { backgroundColor: color };
 	return (
 		<SafeAreaView style={[ _s.sa, _bc ]}>
