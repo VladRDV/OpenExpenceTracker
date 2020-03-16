@@ -26,7 +26,10 @@ function RecordListScreen ({ navigation, list }) {
 		{ value: 24, label: 'food' }
 	];
 	const [ categories, setCategories ] = useState(items);
-
+	const radioBtnProps = {
+		color: _c.salad,
+		labelStyle: { color: _c.black }
+	};
 	useEffect(
 		() => {
 			navigation.setOptions({
@@ -49,28 +52,10 @@ function RecordListScreen ({ navigation, list }) {
 	return (
 		<View style={_s.container}>
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
-			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
-				<RadioButton
-					color={_c.salad}
-					labelStyle={{ color: _c.black }}
-					selected={typeFilterMode === 'all'}
-					onPress={() => setTypeFilter('all')}
-					label={'All'}
-				/>
-				<RadioButton
-					color={_c.salad}
-					labelStyle={{ color: _c.black }}
-					selected={typeFilterMode === 'inc'}
-					onPress={() => setTypeFilter('inc')}
-					label={'Income'}
-				/>
-				<RadioButton
-					color={_c.salad}
-					labelStyle={{ color: _c.black }}
-					selected={typeFilterMode === 'exp'}
-					onPress={() => setTypeFilter('exp')}
-					label={'Expence'}
-				/>
+			<RadioGroup value={typeFilterMode} onValueChange={(x) => setTypeFilter(x)} initialValue={'all'} style={_s.filter}>
+				<RadioButton {...radioBtnProps} value={'all'} label={'All'} />
+				<RadioButton {...radioBtnProps} value={'inc'} label={'Income'} />
+				<RadioButton {...radioBtnProps} value={'exp'} label={'Expence'} />
 			</RadioGroup>
 			<FlatList
 				initialNumToRender={8}

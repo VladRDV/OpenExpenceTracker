@@ -7,31 +7,16 @@ import StatsPieChart from './components/StatsPieChart';
 
 export default function StatisticsScreen () {
 	const [ timespan, setTimespan ] = useState('today');
-
+	const radioBtnProps = {
+		color: _c.dSkyblue,
+		labelStyle: { color: _c.black }
+	};
 	return (
 		<View flex>
-			<RadioGroup value={timespan} initialValue={'today'} style={_s.filter}>
-				<RadioButton
-					color={_c.dSkyblue}
-					labelStyle={{ color: _c.black }}
-					selected={timespan === 'today'}
-					onPress={() => setTimespan('today')}
-					label={'Today'}
-				/>
-				<RadioButton
-					color={_c.dSkyblue}
-					labelStyle={{ color: _c.black }}
-					selected={timespan === 'week'}
-					onPress={() => setTimespan('week')}
-					label={'Last week'}
-				/>
-				<RadioButton
-					color={_c.dSkyblue}
-					labelStyle={{ color: _c.black }}
-					selected={timespan === 'month'}
-					onPress={() => setTimespan('month')}
-					label={'Last month'}
-				/>
+			<RadioGroup value={timespan} onValueChange={(x) => setTimespan(x)} initialValue={'today'} style={_s.filter}>
+				<RadioButton {...radioBtnProps} value={'today'} label={'Today'} />
+				<RadioButton {...radioBtnProps} value={'week'} label={'Last week'} />
+				<RadioButton {...radioBtnProps} value={'month'} label={'Last month'} />
 			</RadioGroup>
 
 			<View style={{ flex: 0.92 }}>

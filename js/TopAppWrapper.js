@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store, persistor } from './redux/store/setup';
+import { store, persistor } from './redux/storeSetup/setup';
 import OpenExpenceTracker from './app/OpenExpenceTracker';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'react-native-gesture-handler';

@@ -10,21 +10,9 @@ export default function AddNewRecordScreen ({ navigation }) {
 	return (
 		<View flex style={_s.container}>
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
-			<RadioGroup value={typeFilterMode} initialValue={'all'} style={_s.filter}>
-				<RadioButton
-					color={_c.green}
-					labelStyle={{ color: _c.green }}
-					selected={typeFilterMode === 'inc'}
-					onPress={() => setTypeFilter('inc')}
-					label={'Income'}
-				/>
-				<RadioButton
-					color={_c.red}
-					labelStyle={{ color: _c.red }}
-					selected={typeFilterMode === 'exp'}
-					onPress={() => setTypeFilter('exp')}
-					label={'Expence'}
-				/>
+			<RadioGroup value={typeFilterMode} onValueChange={(x) => setTypeFilter(x)} initialValue={'inc'} style={_s.filter}>
+				<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={'inc'} label={'Income'} />
+				<RadioButton color={_c.red} labelStyle={{ color: _c.red }} value={'exp'} label={'Expence'} />
 			</RadioGroup>
 			<View paddingH-20 paddingT-40 flex>
 				<TextField
