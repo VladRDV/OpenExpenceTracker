@@ -3,6 +3,7 @@ const _c = {
 	green: '#009900',
 	tomato: 'tomato',
 	dSkyblue: '#009eee',
+	blue: '#00BBF2',
 	salad: '#00bb62',
 	errorColor: '#E63B2E',
 	lGreen: 'lightgreen',
@@ -11,6 +12,7 @@ const _c = {
 	black: '#000',
 	orange: '#ff9944',
 	jogurt: '#aa99ff',
-	lGrey: '#cfcfcf'
+	grey: '#cfcfcf',
+	lGrey: 'rgb(250, 250, 250)'
 };
 export default _c;

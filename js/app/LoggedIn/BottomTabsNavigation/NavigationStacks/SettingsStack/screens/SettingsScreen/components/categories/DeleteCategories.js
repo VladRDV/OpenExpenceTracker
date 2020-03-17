@@ -32,7 +32,7 @@ export default function DeleteCategories ({ toggleStatusBarStyle }) {
 			searchPlaceholder={'Search a language'}
 			searchStyle={{
 				color: _c.dSkyblue,
-				placeholderTextColor: _c.lGrey
+				placeholderTextColor: _c.grey
 			}}>
 			<Picker.Item key={'---'} value={{ label: '--- All ---', value: '----' }} />
 			{[ { value: 0, label: 'AAA' } ].map((option) => <Picker.Item key={option.value} value={option} />)}
@@ -49,6 +49,6 @@ const _s = ScaledSheet.create({
 		fontSize: '18@s'
 	},
 	search: {
-		color: _c.lGrey
+		color: _c.grey
 	}
 });

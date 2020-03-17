@@ -29,19 +29,17 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 						<View center style={_s.header}>
 							<TouchableOpacity
 								onPress={() => {
-									console.log('YYYYYYYYYYY');
 									toggleDialog(!dialogOn);
 									toggleStatusBarStyle(true);
 								}}>
-								<Text>X</Text>
+								<Text style={{ color: _c.blue }}>X</Text>
 							</TouchableOpacity>
 							<TouchableOpacity
 								onPress={() => {
-									console.log('HHHHHHHHH');
 									toggleDialog(!dialogOn);
 									toggleStatusBarStyle(true);
 								}}>
-								<Text>Add</Text>
+								<Text style={{ color: _c.dSkyblue }}>Save</Text>
 							</TouchableOpacity>
 						</View>
 						<View center style={_s.title}>
@@ -66,7 +64,7 @@ const _s = ScaledSheet.create({
 		fontSize: '18@s'
 	},
 	search: {
-		color: _c.lGrey
+		color: _c.grey
 	},
 	dialog: {
 		backgroundColor: _c.white
@@ -82,7 +80,7 @@ const _s = ScaledSheet.create({
 	title: {
 		minWidth: '100%',
 		height: '60@s',
-		backgroundColor: 'red'
+		backgroundColor: _c.white
 	},
 	titleTxt: {
 		color: _c.black,
