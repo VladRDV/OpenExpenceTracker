@@ -18,7 +18,7 @@ export default function RecordsStack ({ navigation, route }) {
 	const { Navigator, Screen } = Stack;
 	return (
 		<StatusBarPaint
-			color={_c.salad}
+			color={_c.gold}
 			statusBarProps={{
 				barStyle: 'light-content'
 			}}>
@@ -40,7 +40,7 @@ export default function RecordsStack ({ navigation, route }) {
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.navigate('AddNewRecordScreen')}
-									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.salad} />}
+									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.gold} />}
 								/>
 							)
 						};
@@ -74,7 +74,7 @@ export default function RecordsStack ({ navigation, route }) {
 								<TouchableOpacity
 									// style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.navigate('RecordListScreen')}
-									children={<MaterialIcons size={scale(40)} name={'chevron-left'} color={_c.salad} />}
+									children={<MaterialIcons size={scale(40)} name={'chevron-left'} color={_c.gold} />}
 								/>
 							),
 							headerRight: () => null

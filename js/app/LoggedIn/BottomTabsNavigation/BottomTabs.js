@@ -30,7 +30,7 @@ export default function BottomTabs ({ navigation }) {
 				name="RecordsStack"
 				component={RecordsStack}
 				options={{
-					tabBarColor: _c.salad,
+					tabBarColor: _c.gold,
 					tabBarLabel: 'Home',
 					tabBarIcon: () => <Ionicons {...iconProps} name={'ios-home'} />
 				}}

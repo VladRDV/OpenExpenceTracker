@@ -27,7 +27,7 @@ function RecordListScreen ({ navigation, list }) {
 	];
 	const [ categories, setCategories ] = useState(items);
 	const radioBtnProps = {
-		color: _c.salad,
+		color: _c.gold,
 		labelStyle: { color: _c.black }
 	};
 	useEffect(
@@ -39,7 +39,7 @@ function RecordListScreen ({ navigation, list }) {
 							<TouchableOpacity
 								style={{ marginHorizontal: scale(8) }}
 								onPress={() => toggleSelectDeleteMode(true)}
-								children={<Feather size={scale(25)} name={'edit'} color={_c.salad} />}
+								children={<Feather size={scale(25)} name={'edit'} color={_c.gold} />}
 							/>
 							<CategoryPicker arr={categories} toggleStatusBarStyle={toggleStatusBarStyle} />
 						</View>
