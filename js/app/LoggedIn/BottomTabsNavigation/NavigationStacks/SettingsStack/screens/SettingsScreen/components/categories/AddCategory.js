@@ -12,7 +12,7 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 		<Fragment>
 			<TouchableOpacity
 				onPress={() => {
-					toggleStatusBarStyle();
+					toggleStatusBarStyle(false);
 					toggleDialog(!dialogOn);
 				}}
 				left
@@ -31,6 +31,7 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 								onPress={() => {
 									console.log('YYYYYYYYYYY');
 									toggleDialog(!dialogOn);
+									toggleStatusBarStyle(true);
 								}}>
 								<Text>X</Text>
 							</TouchableOpacity>
@@ -38,7 +39,7 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 								onPress={() => {
 									console.log('HHHHHHHHH');
 									toggleDialog(!dialogOn);
-									toggleStatusBarStyle();
+									toggleStatusBarStyle(true);
 								}}>
 								<Text>Add</Text>
 							</TouchableOpacity>
