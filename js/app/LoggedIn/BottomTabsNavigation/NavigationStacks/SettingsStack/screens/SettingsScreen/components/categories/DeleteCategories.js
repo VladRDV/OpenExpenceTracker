@@ -1,22 +1,14 @@
 import React from 'react';
-import { Picker, Text, Colors, View } from 'react-native-ui-lib';
-import { StyleSheet } from 'react-native';
+import { Picker, Text, View } from 'react-native-ui-lib';
 import _c from '../../../../../../../../../uiConfig/colors';
-import { scale } from 'react-native-size-matters';
+import { ScaledSheet } from 'react-native-size-matters';
 
 export default function DeleteCategories ({ toggleStatusBarStyle }) {
 	return (
 		<Picker
 			renderPicker={() => (
-				<View
-					flex
-					left
-					centerV
-					paddingH-s5
-					style={{
-						height: scale(60)
-					}}>
-					<Text allowFontScaling={false} style={{ color: _c.black, fontSize: scale(18) }}>
+				<View flex left centerV paddingH-s5 style={_s.btn}>
+					<Text allowFontScaling={false} style={_s.btnTxt}>
 						Delete categories
 					</Text>
 				</View>
@@ -29,18 +21,34 @@ export default function DeleteCategories ({ toggleStatusBarStyle }) {
 			enableModalBlur={false}
 			onChange={toggleStatusBarStyle}
 			topBarProps={{
-				title: 'Languages',
+				title: 'Select categories',
 				cancelButtonProps: {
 					disabled: true,
 					iconSource: null
 				}
 			}}
-			style={{ color: Colors.red20 }}
+			style={_s.search}
 			showSearch
 			searchPlaceholder={'Search a language'}
-			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
+			searchStyle={{
+				color: _c.dSkyblue,
+				placeholderTextColor: _c.lGrey
+			}}>
 			<Picker.Item key={'---'} value={{ label: '--- All ---', value: '----' }} />
 			{[ { value: 0, label: 'AAA' } ].map((option) => <Picker.Item key={option.value} value={option} />)}
 		</Picker>
 	);
 }
+
+const _s = ScaledSheet.create({
+	btn: {
+		height: '60@s'
+	},
+	btnTxt: {
+		color: _c.black,
+		fontSize: '18@s'
+	},
+	search: {
+		color: _c.lGrey
+	}
+});

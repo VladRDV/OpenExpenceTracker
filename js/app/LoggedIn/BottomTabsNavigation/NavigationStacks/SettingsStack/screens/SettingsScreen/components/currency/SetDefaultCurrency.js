@@ -30,7 +30,7 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle }) {
 			enableModalBlur={false}
 			onChange={toggleStatusBarStyle}
 			topBarProps={{
-				title: 'Languages',
+				title: 'Select currency',
 				cancelButtonProps: {
 					disabled: true,
 					iconSource: null

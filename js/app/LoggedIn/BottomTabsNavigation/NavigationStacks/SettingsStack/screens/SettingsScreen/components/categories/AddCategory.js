@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react';
-import { Dialog, Text, Colors, View, TouchableOpacity } from 'react-native-ui-lib';
-import { StyleSheet } from 'react-native';
+import { Dialog, Text, View, TouchableOpacity } from 'react-native-ui-lib';
 import { useDimensions } from '@react-native-community/hooks';
-
 import _c from '../../../../../../../../../uiConfig/colors';
-import { scale } from 'react-native-size-matters';
+import { ScaledSheet } from 'react-native-size-matters';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 export default function AddCategory ({ toggleStatusBarStyle }) {
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
@@ -18,18 +18,77 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 				left
 				centerV
 				paddingH-s5
-				style={{
-					height: scale(60)
-				}}>
-				<Text allowFontScaling={false} style={{ color: _c.black, fontSize: scale(18) }}>
+				style={_s.btn}>
+				<Text allowFontScaling={false} style={_s.btnTxt}>
 					Add category
 				</Text>
 			</TouchableOpacity>
-			<Dialog useSafeArea height={height * 1.1} width={width} visible={dialogOn}>
-				<View flex style={{ backgroundColor: _c.white }}>
-					{/* <Text>AAAAA</Text> */}
+			<Dialog overlayBackgroundColor={'transparent'} height={height} width={width} visible={dialogOn}>
+				<View flex style={_s.dialog}>
+					<SafeAreaView flex>
+						<View center style={_s.header}>
+							<TouchableOpacity
+								onPress={() => {
+									console.log('YYYYYYYYYYY');
+									toggleDialog(!dialogOn);
+								}}>
+								<Text>X</Text>
+							</TouchableOpacity>
+							<TouchableOpacity
+								onPress={() => {
+									console.log('HHHHHHHHH');
+									toggleDialog(!dialogOn);
+									toggleStatusBarStyle();
+								}}>
+								<Text>Add</Text>
+							</TouchableOpacity>
+						</View>
+						<View center style={_s.title}>
+							<Text style={_s.titleTxt}>Type category name</Text>
+						</View>
+						<View style={_s.inputContainer}>
+							<Text>lkfghdsliug</Text>
+						</View>
+					</SafeAreaView>
 				</View>
 			</Dialog>
 		</Fragment>
 	);
 }
+
+const _s = ScaledSheet.create({
+	btn: {
+		height: '60@s'
+	},
+	btnTxt: {
+		color: _c.black,
+		fontSize: '18@s'
+	},
+	search: {
+		color: _c.lGrey
+	},
+	dialog: {
+		backgroundColor: _c.white
+	},
+	header: {
+		flexDirection: 'row',
+		minWidth: '100%',
+		height: '60@s',
+		backgroundColor: _c.white,
+		justifyContent: 'space-between',
+		paddingHorizontal: '8@s'
+	},
+	title: {
+		minWidth: '100%',
+		height: '60@s',
+		backgroundColor: 'red'
+	},
+	titleTxt: {
+		color: _c.black,
+		fontSize: '18@s'
+	},
+	inputContainer: {
+		flex: 1,
+		backgroundColor: 'tomato'
+	}
+});

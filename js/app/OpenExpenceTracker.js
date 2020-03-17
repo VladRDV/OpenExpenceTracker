@@ -7,7 +7,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import LoggedInStack from './LoggedIn/LoggedInStack';
 // import LoggedOutStack from './LoggedOut/LoggedOutStack';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function OpenExpenceTracker () {
 	return (
