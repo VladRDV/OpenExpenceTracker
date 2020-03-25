@@ -9,11 +9,11 @@ export default function Divider () {
 
 const _s = StyleSheet.create({
 	divider: {
-		width: '96%',
+		width: '100%',
 		alignSelf: 'center',
 		borderBottomWidth: StyleSheet.hairlineWidth,
 		backgroundColor: 'transparent',
 		height: 0,
-		borderBottomColor: _c.black
+		borderBottomColor: _c.lGrey
 	}
 });
