@@ -7,7 +7,8 @@
 		"ios": "react-native run-ios",
 		"start": "react-native start",
 		"test": "jest",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"depack": "sudo rm -rf node_modules && rm -rf ios/Podfile.lock ios/Pods"
 	},
 	"dependencies": {
 		"@react-native-community/async-storage": "^1.8.1",
@@ -19,12 +20,12 @@
 		"@react-navigation/native": "^5.0.9",
 		"@react-navigation/stack": "^5.1.1",
 		"@welldone-software/why-did-you-render": "^4.0.5",
+		"axios": "^0.19.2",
 		"moment": "^2.24.0",
 		"prop-types": "^15.7.2",
 		"react": "16.9.0",
 		"react-native": "0.61.5",
 		"react-native-gesture-handler": "^1.6.0",
-		"react-native-keychain": "^4.0.5",
 		"react-native-largelist-v3": "^3.0.15",
 		"react-native-paper": "^3.6.0",
 		"react-native-reanimated": "^1.7.0",

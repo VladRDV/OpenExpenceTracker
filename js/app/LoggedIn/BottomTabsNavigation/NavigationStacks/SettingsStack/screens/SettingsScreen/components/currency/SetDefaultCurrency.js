@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Picker, Text, Colors, View } from 'react-native-ui-lib';
 import { StyleSheet } from 'react-native';
 import _c from '../../../../../../../../../uiConfig/colors';
 import { scale } from 'react-native-size-matters';
 
-export default function SetDefaultCurrency ({ toggleStatusBarStyle }) {
+export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }) {
+	let renderOptions = () => {
+		let arr = [];
+		for (let x in currencies) {
+			arr.push(
+				<Picker.Item
+					key={currencies[x]}
+					value={{
+						value: x,
+						label: currencies[x]
+					}}
+				/>
+			);
+		}
+		console.log(arr, 'arr');
+		return arr;
+	};
+
 	return (
 		<Picker
 			renderPicker={() => (
@@ -22,7 +39,7 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle }) {
 					</Text>
 				</View>
 			)}
-			placeholder="Favorite Language"
+			placeholder="Search currency"
 			mode={'SINGLE'}
 			floatingPlaceholder
 			onPress={toggleStatusBarStyle}
@@ -41,7 +58,7 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle }) {
 			searchPlaceholder={'Search a language'}
 			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
 			<Picker.Item key={'---'} value={{ label: '--- All ---', value: '----' }} />
-			{[ { value: 0, label: 'AAA' } ].map((option) => <Picker.Item key={option.value} value={option} />)}
+			{renderOptions()}
 		</Picker>
 	);
 }

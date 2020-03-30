@@ -67,16 +67,19 @@ const recordsStack = (state = defaultState, action) => {
 	switch (action.type) {
 		case ADD_RECORD: {
 			return {
+				...state,
 				list: action.data
 			};
 		}
 		case DELETE_RECORDS: {
 			return {
+				...state,
 				list: action.data
 			};
 		}
 		case PATCH_RECORD: {
 			return {
+				...state,
 				list: action.data
 			};
 		}

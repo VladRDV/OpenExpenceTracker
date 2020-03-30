@@ -5,6 +5,8 @@
  **/
 
 import testSaga from '../sagas/handlers/test-saga';
+import getCurrenciesSage from '../sagas/handlers/settingsStack/get-currencies-saga';
 export default function activeteSagas (sagaMiddleware) {
 	sagaMiddleware.run(testSaga);
+	sagaMiddleware.run(getCurrenciesSage);
 }
