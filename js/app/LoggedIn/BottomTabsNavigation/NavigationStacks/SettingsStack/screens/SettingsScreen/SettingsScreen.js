@@ -24,7 +24,7 @@ function SettingsScreen ({ currencies, getCurrencies }) {
 				<Divider />
 				<DeleteCategories toggleStatusBarStyle={toggleStatusBarStyle} />
 				<SectionTitle txt={'Currency'} />
-				<SetDefaultCurrency currencies={currencies} onPress={toggleStatusBarStyle} />
+				<SetDefaultCurrency currencies={currencies} toggleStatusBarStyle={toggleStatusBarStyle} />
 				<Divider />
 			</View>
 		</ScrollView>

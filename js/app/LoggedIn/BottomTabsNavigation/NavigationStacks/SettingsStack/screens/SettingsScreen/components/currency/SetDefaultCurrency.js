@@ -19,7 +19,6 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }
 					/>
 				);
 			}
-			console.log(arr, 'arr');
 			return arr;
 		},
 		[ currencies ]
