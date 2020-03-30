@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native';
-import _c from '../../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 
 export default function Divider () {
 	return <View style={_s.divider} />;

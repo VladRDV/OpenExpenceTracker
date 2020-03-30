@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { scale } from 'react-native-size-matters';
 
 import Feather from 'react-native-vector-icons/Feather';
-import _c from '../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 
 import ListItem from './components/ListItem';
 import CategoryPicker from './components/CategoryPicker';

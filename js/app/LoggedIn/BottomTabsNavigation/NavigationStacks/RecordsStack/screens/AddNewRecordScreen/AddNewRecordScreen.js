@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { DateTimePicker, View, RadioGroup, RadioButton, TextField, Picker } from 'react-native-ui-lib';
-import _c from '../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import { scale } from 'react-native-size-matters';
 
 export default function AddNewRecordScreen ({ navigation }) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Picker, Text, View } from 'react-native-ui-lib';
-import _c from '../../../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 
 export default function DeleteCategories ({ toggleStatusBarStyle }) {

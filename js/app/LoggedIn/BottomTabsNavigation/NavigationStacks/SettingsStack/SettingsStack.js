@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from './screens/SettingsScreen/SettingsScreen';
-import _c from '../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import { scale } from 'react-native-size-matters';
 import StatusBarPaint from '../../components/StatusBarPaint';
 

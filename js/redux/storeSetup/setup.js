@@ -10,7 +10,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import activateSagas from './activateSagas';
 
+// import createSensitiveStorage from 'redux-persist-sensitive-storage';
+
 function configureReduxStore () {
+	// const sensitiveStorage = createSensitiveStorage({
+	// 	keychainService: 'myKeychain',
+	// 	sharedPreferencesName: 'mySharedPrefs'
+	// });
+
 	const persistConfig = {
 		key: 'root',
 		storage: AsyncStorage,

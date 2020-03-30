@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Picker, Text, Colors, View } from 'react-native-ui-lib';
 import { StyleSheet } from 'react-native';
-import _c from '../../../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import { scale } from 'react-native-size-matters';
 
 export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }) {

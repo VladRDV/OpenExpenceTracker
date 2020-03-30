@@ -10,7 +10,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale } from 'react-native-size-matters';
 
-import _c from '../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import StatusBarPaint from '../../components/StatusBarPaint';
 
 export default function RecordsStack ({ navigation, route }) {

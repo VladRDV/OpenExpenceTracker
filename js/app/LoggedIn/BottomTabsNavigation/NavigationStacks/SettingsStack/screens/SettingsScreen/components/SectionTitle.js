@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native-ui-lib';
-import _c from '../../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import { scale } from 'react-native-size-matters';
 
 export default function SectionTitle ({ txt }) {

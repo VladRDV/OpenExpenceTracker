@@ -4,7 +4,7 @@ import { scale } from 'react-native-size-matters';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import _c from '../../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 
 export default function CategoryPicker ({ toggleStatusBarStyle, arr, select, toggle }) {
 	return (

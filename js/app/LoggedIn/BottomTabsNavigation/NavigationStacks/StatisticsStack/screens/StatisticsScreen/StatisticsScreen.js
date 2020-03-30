@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { View, Text, RadioGroup, RadioButton } from 'react-native-ui-lib';
 import { scale } from 'react-native-size-matters';
-import _c from '../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import StatsPieChart from './components/StatsPieChart';
-
+import Table from './components/Table';
 export default function StatisticsScreen () {
 	const [ timespan, setTimespan ] = useState('today');
 	const radioBtnProps = {
@@ -22,7 +22,7 @@ export default function StatisticsScreen () {
 			<View style={{ flex: 0.92 }}>
 				<StatsPieChart />
 			</View>
-			{/* <AreaChartExample /> */}
+			<Table />
 		</View>
 	);
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, StatusBar } from 'react-native';
 import { View } from 'react-native-ui-lib';
-import _c from '../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 
 import SectionTitle from './components/SectionTitle';
 import AddCategory from './components/categories/AddCategory';
@@ -9,7 +9,7 @@ import DeleteCategories from './components/categories/DeleteCategories';
 import SetDefaultCurrency from './components/currency/SetDefaultCurrency';
 import Divider from './components/Divider';
 import { connect } from 'react-redux';
-import { getCurrencies_A } from '../../../../../../../redux/actions/settingsStack/getCurrencies';
+import { getCurrencies_A } from 'js/redux/actions/settingsStack/getCurrencies';
 function SettingsScreen ({ currencies, getCurrencies }) {
 	const [ statusBarIsLight, toggleStatusBarStyle ] = useState(true);
 	useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Dialog, Text, View, TouchableOpacity } from 'react-native-ui-lib';
 import { useDimensions } from '@react-native-community/hooks';
-import _c from '../../../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 import { SafeAreaView } from 'react-native-safe-area-context';
 

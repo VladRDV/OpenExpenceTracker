@@ -5,7 +5,7 @@ import { scale, ScaledSheet } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import _c from '../../../../../../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 
 export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	const typeColor = data.type === 'inc' ? _c.lGreen : _c.grey;

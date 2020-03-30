@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import _c from '../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 import { scale } from 'react-native-size-matters';
 
 export default function SplashScreen () {

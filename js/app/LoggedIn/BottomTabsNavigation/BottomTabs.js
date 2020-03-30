@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { scale } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
-import _c from '../../../uiConfig/colors';
+import _c from 'js/uiConfig/colors';
 
 import RecordsStack from './NavigationStacks/RecordsStack/RecordsStack';
 import SettingsStack from './NavigationStacks/SettingsStack/SettingsStack';
