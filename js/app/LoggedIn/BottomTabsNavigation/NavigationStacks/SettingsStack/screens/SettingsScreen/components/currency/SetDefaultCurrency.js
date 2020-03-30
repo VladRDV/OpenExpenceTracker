@@ -5,22 +5,25 @@ import _c from '../../../../../../../../../uiConfig/colors';
 import { scale } from 'react-native-size-matters';
 
 export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }) {
-	let renderOptions = () => {
-		let arr = [];
-		for (let x in currencies) {
-			arr.push(
-				<Picker.Item
-					key={currencies[x]}
-					value={{
-						value: x,
-						label: currencies[x]
-					}}
-				/>
-			);
-		}
-		console.log(arr, 'arr');
-		return arr;
-	};
+	let renderOptions = useCallback(
+		() => {
+			let arr = [];
+			for (let x in currencies) {
+				arr.push(
+					<Picker.Item
+						key={currencies[x]}
+						value={{
+							value: x,
+							label: currencies[x]
+						}}
+					/>
+				);
+			}
+			console.log(arr, 'arr');
+			return arr;
+		},
+		[ currencies ]
+	);
 
 	return (
 		<Picker
