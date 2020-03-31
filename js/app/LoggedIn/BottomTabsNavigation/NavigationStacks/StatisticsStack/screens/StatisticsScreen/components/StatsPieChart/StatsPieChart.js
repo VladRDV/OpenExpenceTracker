@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { PieChart } from 'react-native-svg-charts';
-import { View, Text } from 'react-native-ui-lib';
-import { Text as SVGText } from 'react-native-svg';
+import { View } from 'react-native-ui-lib';
+import { StyleSheet } from 'react-native';
+import _c from 'js/uiConfig/colors';
+import Labels from './Labels';
 
 export default function StatsPieChart () {
 	const pieData = [
@@ -34,34 +36,19 @@ export default function StatsPieChart () {
 	];
 
 	return (
-		<View style={{ flex: 0.46, backgroundColor: 'red' }}>
+		<View style={_s.container}>
 			<PieChart
 				style={{ height: '100%', width: '100%' }}
 				valueAccessor={({ item }) => item.amount}
 				data={pieData}
-				innerRadius={'25%'}
+				innerRadius={'55%'}
 				outerRadius={'85%'}>
 				<Labels />
 			</PieChart>
 		</View>
 	);
 }
-const Labels = ({ slices, height, width }) => {
-	return slices.map((slice, index) => {
-		const { labelCentroid, pieCentroid, data } = slice;
-		return (
-			<SVGText
-				key={index}
-				x={pieCentroid[0]}
-				y={pieCentroid[1]}
-				fill={'white'}
-				textAnchor={'middle'}
-				alignmentBaseline={'middle'}
-				fontSize={24}
-				stroke={'black'}
-				strokeWidth={0.2}>
-				{data.amount}
-			</SVGText>
-		);
-	});
-};
+
+const _s = StyleSheet.create({
+	container: { flex: 0.46, backgroundColor: _c.white }
+});
