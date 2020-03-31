@@ -39,7 +39,7 @@ export default function RecordListScreen ({ data, condition, typeFilterMode }) {
 	// const animation = condition ? _in : _out;
 	// const imageAnimationProps = AnimatableManager.getRandomDelay();
 	const arrow = data.type === 'inc' ? 'arrowup' : 'arrowdown';
-	const arrowColor = data.type === 'inc' ? _c.lGreen : _c.grey;
+	const arrowColor = data.type === 'inc' ? _c.green : _c.red;
 	if (condition) {
 		return (
 			<Animatable.View {...fadeIn}>
