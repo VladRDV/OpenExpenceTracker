@@ -32,14 +32,18 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 									toggleDialog(!dialogOn);
 									toggleStatusBarStyle(true);
 								}}>
-								<Text style={{ color: _c.blue }}>X</Text>
+								<Text text70 style={{ color: _c.dSkyblue }}>
+									Cancel
+								</Text>
 							</TouchableOpacity>
 							<TouchableOpacity
 								onPress={() => {
 									toggleDialog(!dialogOn);
 									toggleStatusBarStyle(true);
 								}}>
-								<Text style={{ color: _c.dSkyblue }}>Save</Text>
+								<Text text70 style={{ color: _c.dSkyblue }}>
+									Save
+								</Text>
 							</TouchableOpacity>
 						</View>
 						<View center style={_s.title}>

@@ -14,7 +14,7 @@ export default function Labels ({ slices, height, width }) {
 				fill={_c.white}
 				textAnchor={'middle'}
 				alignmentBaseline={'middle'}
-				fontSize={scale(14)}
+				fontSize={scale(16)}
 				stroke={_c.white}
 				strokeWidth={1}>
 				{data.amount}

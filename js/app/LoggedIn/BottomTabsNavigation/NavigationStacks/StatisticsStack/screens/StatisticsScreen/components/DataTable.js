@@ -7,14 +7,14 @@ import _c from 'js/uiConfig/colors';
 export default function LabelsTable () {
 	return (
 		<View style={_s.table}>
-			{[ 0, 0, 0, 0, 0, 0, 0 ].map(() => (
-				<View style={_s.row}>
+			{[ 0, 0, 0, 0, 0, 0, 0 ].map((el, ind) => (
+				<View key={ind} style={_s.row}>
 					<View style={_s.left}>
-						<Text children={'food'} />
+						<Text text70 children={'food'} />
 						<View style={[ _s.circle, { backgroundColor: 'red' } ]} />
 					</View>
 					<View style={_s.right}>
-						<Text children={'234$'} />
+						<Text text70 children={'234$'} />
 					</View>
 				</View>
 			))}

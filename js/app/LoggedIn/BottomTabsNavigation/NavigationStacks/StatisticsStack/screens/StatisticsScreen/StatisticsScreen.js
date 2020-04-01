@@ -5,7 +5,6 @@ import { scale } from 'react-native-size-matters';
 import _c from 'js/uiConfig/colors';
 import StatsPieChart from './components/StatsPieChart/StatsPieChart';
 import DataTable from './components/DataTable';
-import LabelsTable from './components/LabelsTable';
 import Gradient from './components/Gradient';
 
 export default function StatisticsScreen () {
@@ -31,7 +30,6 @@ export default function StatisticsScreen () {
 			<View style={_s.txtData}>
 				<Gradient />
 				<ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: '6%' }}>
-					{/* <LabelsTable /> */}
 					<DataTable />
 				</ScrollView>
 			</View>

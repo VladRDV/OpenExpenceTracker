@@ -30,25 +30,22 @@ function RecordListScreen ({ navigation, list }) {
 		color: _c.gold,
 		labelStyle: { color: _c.black }
 	};
-	useEffect(
-		() => {
-			navigation.setOptions({
-				headerLeft: () => {
-					return (
-						<View style={{ flexDirection: 'row' }}>
-							<TouchableOpacity
-								style={{ marginHorizontal: scale(8) }}
-								onPress={() => toggleSelectDeleteMode(true)}
-								children={<Feather size={scale(25)} name={'edit'} color={_c.gold} />}
-							/>
-							<CategoryPicker arr={categories} toggleStatusBarStyle={toggleStatusBarStyle} />
-						</View>
-					);
-				}
-			});
-		},
-		[ categoryFilterOn ]
-	);
+	useEffect(() => {
+		navigation.setOptions({
+			headerLeft: () => {
+				return (
+					<View style={{ flexDirection: 'row' }}>
+						<TouchableOpacity
+							style={{ marginHorizontal: scale(8) }}
+							onPress={() => toggleSelectDeleteMode(!isInSelectDeleteMode)}
+							children={<Feather size={scale(25)} name={'edit'} color={_c.gold} />}
+						/>
+						<CategoryPicker arr={categories} toggleStatusBarStyle={toggleStatusBarStyle} />
+					</View>
+				);
+			}
+		});
+	}, []);
 	return (
 		<View style={_s.container}>
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
@@ -65,7 +62,7 @@ function RecordListScreen ({ navigation, list }) {
 				data={list}
 				keyExtractor={(item) => item.id}
 				renderItem={({ item }) => (
-					<ListItem data={item} typeFilterMode={typeFilterMode} condition={item.type === typeFilterMode || typeFilterMode === 'all'} />
+					<ListItem data={item} isInSelectDeleteMode={isInSelectDeleteMode} condition={item.type === typeFilterMode || typeFilterMode === 'all'} />
 				)}
 			/>
 		</View>

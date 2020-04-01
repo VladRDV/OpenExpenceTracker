@@ -41,8 +41,8 @@ export default function StatsPieChart () {
 				style={{ height: '100%', width: '100%' }}
 				valueAccessor={({ item }) => item.amount}
 				data={pieData}
-				innerRadius={'55%'}
-				outerRadius={'85%'}>
+				innerRadius={'60%'}
+				outerRadius={'90%'}>
 				<Labels />
 			</PieChart>
 		</View>
