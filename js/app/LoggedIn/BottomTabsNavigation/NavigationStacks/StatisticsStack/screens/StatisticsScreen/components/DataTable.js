@@ -23,7 +23,7 @@ export default function LabelsTable () {
 					<Text text60 children={'Total:'} />
 				</View>
 				<View style={_s.right}>
-					<Text text60 children={'9000$'} />
+					<Text text60 children={'90000$'} />
 				</View>
 			</View>
 		</View>
@@ -44,16 +44,16 @@ const _s = ScaledSheet.create({
 		flexDirection: 'row',
 		borderColor: _c.grey,
 		borderBottomWidth: StyleSheet.hairlineWidth,
-		paddingHorizontal: '3%'
+		paddingLeft: '3%'
 	},
 	right: {
-		flex: 0.5,
-		alignItems: 'flex-end',
+		flex: 0.35,
+		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	left: {
 		flexDirection: 'row',
-		flex: 0.5,
+		flex: 0.65,
 		borderColor: _c.grey,
 		borderRightWidth: StyleSheet.hairlineWidth,
 		alignItems: 'center',

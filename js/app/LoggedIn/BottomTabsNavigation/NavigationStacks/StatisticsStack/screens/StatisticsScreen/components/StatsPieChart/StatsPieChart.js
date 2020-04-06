@@ -11,27 +11,31 @@ export default function StatsPieChart () {
 			key: 1,
 			amount: 50,
 			svg: { fill: 'blue' },
-			arc: { cornerRadius: 4 }
+			arc: { cornerRadius: 6 }
 		},
 		{
 			key: 2,
 			amount: 50,
-			svg: { fill: '#9900cc' }
+			svg: { fill: '#9900cc' },
+			arc: { cornerRadius: 6 }
 		},
 		{
 			key: 3,
 			amount: 40,
-			svg: { fill: '#c61aff' }
+			svg: { fill: '#c61aff' },
+			arc: { cornerRadius: 6 }
 		},
 		{
-			key: 4,
+			key: 6,
 			amount: 195,
-			svg: { fill: 'tomato' }
+			svg: { fill: 'tomato' },
+			arc: { cornerRadius: 6 }
 		},
 		{
 			key: 5,
 			amount: 35,
-			svg: { fill: '#ecb3ff' }
+			svg: { fill: '#ecb3ff' },
+			arc: { cornerRadius: 6 }
 		}
 	];
 
@@ -41,8 +45,8 @@ export default function StatsPieChart () {
 				style={{ height: '100%', width: '100%' }}
 				valueAccessor={({ item }) => item.amount}
 				data={pieData}
-				innerRadius={'60%'}
-				outerRadius={'90%'}>
+				innerRadius={'40%'}
+				outerRadius={'95%'}>
 				<Labels />
 			</PieChart>
 		</View>
