@@ -4,7 +4,7 @@ import { scale } from 'react-native-size-matters';
 
 import _c from 'js/uiConfig/colors';
 
-export default function CategoryPicker ({ toggleStatusBarStyle, arr, select, toggle }) {
+export default function CategoryPicker ({ toggleStatusBarStyle, categories, select, toggle }) {
 	return (
 		<Picker
 			placeholder="Choose category"
@@ -24,7 +24,7 @@ export default function CategoryPicker ({ toggleStatusBarStyle, arr, select, tog
 			showSearch
 			searchPlaceholder={'Search a language'}
 			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
-			{arr.map((option) => <Picker.Item key={option.value} value={option} />)}
+			{categories.map((option) => <Picker.Item key={option.value} value={option} />)}
 		</Picker>
 	);
 }

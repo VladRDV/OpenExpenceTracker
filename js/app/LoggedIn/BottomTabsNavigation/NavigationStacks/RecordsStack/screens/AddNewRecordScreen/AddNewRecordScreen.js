@@ -8,20 +8,12 @@ import DatePicker from './components/DatePicker';
 import AmmountInput from './components/AmmountInput';
 import SidenoteInput from './components/SidenoteInput';
 import FormSubmit from './components/FormSubmit';
+import { connect } from 'react-redux';
 
-export default function AddNewRecordScreen ({ navigation }) {
+function AddNewRecordScreen ({ navigation, categories }) {
 	const [ typeFilterMode, setTypeFilter ] = useState('inc');
 	const [ date, setDate ] = useState(new Date());
 	const [ statusBarIsLight, toggleStatusBarStyle ] = useState(true);
-	const items = [
-		{ value: 0, label: 'shopping' },
-		{ value: 1, label: 'job' },
-		{ value: 3, label: 'parties' },
-		{ value: 5, label: 'traveling' },
-		{ value: 10, label: 'gifts' },
-		{ value: 24, label: 'food' }
-	];
-	const [ categories, setCategories ] = useState(items);
 	return (
 		<View flex style={_s.container}>
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
@@ -32,7 +24,7 @@ export default function AddNewRecordScreen ({ navigation }) {
 			<View paddingH-20 paddingT-40 flex>
 				<AmmountInput toggleStatusBarStyle={toggleStatusBarStyle} statusBarIsLight={statusBarIsLight} />
 				<DatePicker setDate={setDate} date={date} />
-				<CategoryPicker arr={categories} />
+				<CategoryPicker categories={categories} />
 				<SidenoteInput toggleStatusBarStyle={toggleStatusBarStyle} statusBarIsLight={statusBarIsLight} />
 			</View>
 			<FormSubmit />
@@ -49,8 +41,18 @@ const _s = StyleSheet.create({
 		height: '8%',
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		borderBottomWidth: scale(0.5),
+		borderBottomWidth: StyleSheet.hairlineWidth,
 		borderColor: _c.lGrey,
 		backgroundColor: _c.white
 	}
 });
+const mapStateToProps = ({ settingsStack }) => ({
+	currencies: settingsStack.currencies,
+	categories: settingsStack.categories,
+	defaultCurrency: settingsStack.defaultCurrency
+});
+const mapDispatchToProps = (dispatch) => ({
+	setDefaultCurrency: (data) => dispatch(setDefaultCurrency(data)),
+	getCurrencies: (data) => dispatch(getCurrencies_A(data))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(AddNewRecordScreen);
