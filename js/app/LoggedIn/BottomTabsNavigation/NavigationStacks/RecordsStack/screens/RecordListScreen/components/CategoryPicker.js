@@ -17,22 +17,20 @@ export default function CategoryPicker ({ toggleStatusBarStyle, arr, select, tog
 			placeholder="Favorite Language"
 			mode={'SINGLE'}
 			floatingPlaceholder
-			onPress={toggleStatusBarStyle}
+			onPress={() => toggleStatusBarStyle(false)}
 			// value={language}
 			enableModalBlur={false}
-			onChange={toggleStatusBarStyle}
+			onChange={() => toggleStatusBarStyle(true)}
 			topBarProps={{
-				title: 'Languages',
-				cancelButtonProps: {
-					disabled: true,
-					iconSource: null
+				title: 'Choose a category',
+				onCancel: () => {
+					toggleStatusBarStyle(true);
 				}
 			}}
 			style={{ color: Colors.red20 }}
 			showSearch
 			searchPlaceholder={'Search a language'}
 			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
-			<Picker.Item key={'---'} value={{ label: '--- All ---', value: '----' }} />
 			{arr.map((option) => <Picker.Item key={option.value} value={option} />)}
 		</Picker>
 	);

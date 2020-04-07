@@ -38,25 +38,23 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies, 
 			placeholder="Search currency"
 			mode={'SINGLE'}
 			floatingPlaceholder
-			onPress={toggleStatusBarStyle}
+			onPress={() => toggleStatusBarStyle(false)}
 			value={defaultCurrency}
 			enableModalBlur={false}
 			onChange={(e) => {
-				toggleStatusBarStyle();
+				toggleStatusBarStyle(true);
 				setDefaultCurrency(e);
 			}}
 			topBarProps={{
 				title: 'Select currency',
-				cancelButtonProps: {
-					disabled: true,
-					iconSource: null
+				onCancel: () => {
+					toggleStatusBarStyle(true);
 				}
 			}}
 			style={{ color: Colors.red20 }}
 			showSearch
 			searchPlaceholder={'Search a language'}
 			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
-			<Picker.Item key={'---'} value={{ label: '---', value: '' }} />
 			{renderOptions()}
 			<SafeAreaView style={_s.bottomOffset} />
 		</Picker>
