@@ -1,7 +1,7 @@
-import { takeEvery, put, call, select } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import { getCurrencies_E, getCurrencies_S, GET_CURRENCIES_A } from '../../../actions/settingsStack/getCurrencies';
 import axios from 'axios';
-
+// fetching a currency list is not a necessity, this saga is here more for demonstrational purpoces
 export default function* () {
 	yield takeEvery(GET_CURRENCIES_A, handleGetCurrencies);
 }

@@ -1,20 +1,24 @@
 import React, { Fragment, useState, useCallback } from 'react';
 import { Dialog, Text, View, TouchableOpacity } from 'react-native-ui-lib';
-import { TextInput } from 'react-native';
+import { TextInput, Alert } from 'react-native';
 import { useDimensions } from '@react-native-community/hooks';
 import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function AddCategory ({ toggleStatusBarStyle, addCategory }) {
+export default function AddCategory ({ toggleStatusBarStyle, addCategory, categories }) {
 	const [ txtVal, setTxtVal ] = useState('');
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
 	const handleSave = useCallback(
 		() => {
-			toggleDialog(!dialogOn);
-			toggleStatusBarStyle(true);
-			addCategory(txtVal);
+			if (categories.includes(txtVal)) {
+				Alert.alert('Open Expence Tracker', 'Provided category already exists');
+			} else {
+				toggleDialog(!dialogOn);
+				toggleStatusBarStyle(true);
+				addCategory(txtVal);
+			}
 		},
 		[ txtVal ]
 	);

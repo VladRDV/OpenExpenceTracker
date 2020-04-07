@@ -4,23 +4,15 @@ import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 
 export default function DeleteCategories ({ toggleStatusBarStyle, categories, deleteCategories }) {
-	const disabled = !categories.length;
-	const renderBtn = useCallback(
-		() => {
-			const btn = (
+	return (
+		<Picker
+			renderPicker={() => (
 				<View flex left centerV paddingH-s5 style={_s.btn}>
 					<Text allowFontScaling={false} style={_s.btnTxt}>
 						Delete categories
 					</Text>
 				</View>
-			);
-			return disabled ? null : btn;
-		},
-		[ categories ]
-	);
-	return (
-		<Picker
-			renderPicker={() => renderBtn()}
+			)}
 			placeholder="Search categories"
 			mode={'MULTI'}
 			floatingPlaceholder

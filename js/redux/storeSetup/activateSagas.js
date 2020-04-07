@@ -4,9 +4,7 @@
  * I've moved this process here to avoid bloating 'js/redux/store/setup.js' with repetitive code
  **/
 
-import testSaga from '../sagas/handlers/test-saga';
 import getCurrenciesSage from '../sagas/handlers/settingsStack/get-currencies-saga';
 export default function activeteSagas (sagaMiddleware) {
-	sagaMiddleware.run(testSaga);
 	sagaMiddleware.run(getCurrenciesSage);
 }

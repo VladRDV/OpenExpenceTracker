@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { ScrollView, StatusBar } from 'react-native';
 import { View } from 'react-native-ui-lib';
 import _c from 'js/uiConfig/colors';
@@ -25,9 +25,13 @@ function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaul
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
 			<View flex>
 				<SectionTitle txt={'Record categories'} />
-				<AddCategory addCategory={addCategory} toggleStatusBarStyle={toggleStatusBarStyle} />
-				<Divider />
-				<DeleteCategories toggleStatusBarStyle={toggleStatusBarStyle} categories={categories} deleteCategories={deleteCategories} />
+				<AddCategory categories={categories} addCategory={addCategory} toggleStatusBarStyle={toggleStatusBarStyle} />
+				{!!categories.length && (
+					<Fragment>
+						<Divider />
+						<DeleteCategories toggleStatusBarStyle={toggleStatusBarStyle} categories={categories} deleteCategories={deleteCategories} />
+					</Fragment>
+				)}
 				<SectionTitle txt={'Currency'} />
 				<SetDefaultCurrency
 					currencies={currencies}
