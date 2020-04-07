@@ -1,11 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { Dialog, Text, View, TouchableOpacity } from 'react-native-ui-lib';
+import { TextInput } from 'react-native';
 import { useDimensions } from '@react-native-community/hooks';
 import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function AddCategory ({ toggleStatusBarStyle }) {
+export default function AddCategory ({ toggleStatusBarStyle, setCategory }) {
+	const [ txtVal, setTxtVal ] = useState('');
+
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
 	return (
@@ -31,6 +34,7 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 								onPress={() => {
 									toggleDialog(!dialogOn);
 									toggleStatusBarStyle(true);
+									setCategory(txtVal);
 								}}>
 								<Text text70 style={{ color: _c.dSkyblue }}>
 									Cancel
@@ -46,11 +50,19 @@ export default function AddCategory ({ toggleStatusBarStyle }) {
 								</Text>
 							</TouchableOpacity>
 						</View>
-						<View center style={_s.title}>
-							<Text style={_s.titleTxt}>Type category name</Text>
-						</View>
 						<View style={_s.inputContainer}>
-							<Text>lkfghdsliug</Text>
+							<TextInput
+								maxLength={30}
+								placeholder={'Type the name of the category'}
+								value={txtVal}
+								onChangeText={(text) => setTxtVal(text)}
+								placeholderTextColor={_c.grey}
+								returnKeyType="done"
+								multiline={false}
+								style={_s.input}
+								allowFontScaling={false}
+								blurOnSubmit
+							/>
 						</View>
 					</SafeAreaView>
 				</View>
@@ -92,6 +104,13 @@ const _s = ScaledSheet.create({
 	},
 	inputContainer: {
 		flex: 1,
-		backgroundColor: 'tomato'
+		justifyContent: 'flex-start'
+	},
+	input: {
+		paddingHorizontal: '3%',
+		textAlign: 'left',
+		textAlignVertical: 'top',
+		color: _c.black,
+		fontSize: '20@msr'
 	}
 });

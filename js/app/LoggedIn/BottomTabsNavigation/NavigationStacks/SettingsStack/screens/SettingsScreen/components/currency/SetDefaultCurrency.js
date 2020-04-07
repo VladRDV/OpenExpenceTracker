@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { Picker, Text, Colors, View } from 'react-native-ui-lib';
-import { StyleSheet } from 'react-native';
 import _c from 'js/uiConfig/colors';
-import { scale } from 'react-native-size-matters';
+import { ScaledSheet } from 'react-native-size-matters';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }) {
+export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies, defaultCurrency, setDefaultCurrency }) {
 	let renderOptions = useCallback(
 		() => {
 			let arr = [];
@@ -23,21 +23,15 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }
 		},
 		[ currencies ]
 	);
-
+	const setPickerLabelTxt = useCallback(() => (defaultCurrency.value ? `Set default currency (${defaultCurrency.value})` : 'Set default currency'), [
+		defaultCurrency
+	]);
 	return (
 		<Picker
 			renderPicker={() => (
-				<View
-					flex
-					left
-					centerV
-					paddingH-s5
-					style={{
-						backgroundColor: 'transparent',
-						height: scale(55)
-					}}>
-					<Text allowFontScaling={false} style={{ color: _c.black, fontSize: scale(18) }}>
-						Set default currency
+				<View flex left centerV paddingH-s5 style={_s.pickerLabel}>
+					<Text ellipsizeMode={'tail'} allowFontScaling={false} style={_s.pickerLabelTxt}>
+						{setPickerLabelTxt()}
 					</Text>
 				</View>
 			)}
@@ -45,9 +39,12 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }
 			mode={'SINGLE'}
 			floatingPlaceholder
 			onPress={toggleStatusBarStyle}
-			// value={language}
+			value={defaultCurrency}
 			enableModalBlur={false}
-			onChange={toggleStatusBarStyle}
+			onChange={(e) => {
+				toggleStatusBarStyle();
+				setDefaultCurrency(e);
+			}}
 			topBarProps={{
 				title: 'Select currency',
 				cancelButtonProps: {
@@ -59,8 +56,20 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies }
 			showSearch
 			searchPlaceholder={'Search a language'}
 			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
-			<Picker.Item key={'---'} value={{ label: '--- All ---', value: '----' }} />
+			<Picker.Item key={'---'} value={{ label: '---', value: '' }} />
 			{renderOptions()}
+			<SafeAreaView style={_s.bottomOffset} />
 		</Picker>
 	);
 }
+const _s = ScaledSheet.create({
+	pickerLabel: {
+		backgroundColor: 'transparent',
+		height: '55@s'
+	},
+	pickerLabelTxt: {
+		color: _c.black,
+		fontSize: '18@s'
+	},
+	bottomOffset: { height: '25@s' }
+});

@@ -1,13 +1,15 @@
 import { GET_CURRENCIES_A, GET_CURRENCIES_R, GET_CURRENCIES_E, GET_CURRENCIES_S } from '../../actions/settingsStack/getCurrencies';
+import { SET_DEFAULT_CURRENCY } from '../../actions/settingsStack/setDefaultCurrency';
 
 const defaultState = {
 	currencies: [],
+	defaultCurrency: { label: '---', value: '' },
 	getCurrencies_A: false,
 	getCurrencies_S: false,
 	getCurrencies_E: false
 };
 
-const recordsStack = (state = defaultState, action) => {
+const settingsStack = (state = defaultState, action) => {
 	switch (action.type) {
 		case GET_CURRENCIES_A: {
 			return {
@@ -46,9 +48,16 @@ const recordsStack = (state = defaultState, action) => {
 			};
 		}
 
+		case SET_DEFAULT_CURRENCY: {
+			return {
+				...state,
+				defaultCurrency: action.data
+			};
+		}
+
 		default:
 			return state;
 	}
 };
 
-export default recordsStack;
+export default settingsStack;

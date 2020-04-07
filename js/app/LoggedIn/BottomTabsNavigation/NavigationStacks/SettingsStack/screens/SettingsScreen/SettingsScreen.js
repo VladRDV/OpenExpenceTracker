@@ -10,8 +10,11 @@ import SetDefaultCurrency from './components/currency/SetDefaultCurrency';
 import Divider from './components/Divider';
 import { connect } from 'react-redux';
 import { getCurrencies_A } from 'js/redux/actions/settingsStack/getCurrencies';
-function SettingsScreen ({ currencies, getCurrencies }) {
+import { setDefaultCurrency } from 'js/redux/actions/settingsStack/setDefaultCurrency';
+
+function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaultCurrency }) {
 	const [ statusBarIsLight, toggleStatusBarStyle ] = useState(true);
+	const [ category, setCategory ] = useState(0);
 	useEffect(() => {
 		if (!currencies.length) getCurrencies();
 	}, []);
@@ -20,20 +23,27 @@ function SettingsScreen ({ currencies, getCurrencies }) {
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
 			<View flex>
 				<SectionTitle txt={'Record categories'} />
-				<AddCategory toggleStatusBarStyle={toggleStatusBarStyle} />
+				<AddCategory setCategory={setCategory} toggleStatusBarStyle={toggleStatusBarStyle} />
 				<Divider />
 				<DeleteCategories toggleStatusBarStyle={toggleStatusBarStyle} />
 				<SectionTitle txt={'Currency'} />
-				<SetDefaultCurrency currencies={currencies} toggleStatusBarStyle={toggleStatusBarStyle} />
+				<SetDefaultCurrency
+					currencies={currencies}
+					toggleStatusBarStyle={toggleStatusBarStyle}
+					defaultCurrency={defaultCurrency}
+					setDefaultCurrency={setDefaultCurrency}
+				/>
 				<Divider />
 			</View>
 		</ScrollView>
 	);
 }
 const mapStateToProps = ({ settingsStack }) => ({
-	currencies: settingsStack.currencies
+	currencies: settingsStack.currencies,
+	defaultCurrency: settingsStack.defaultCurrency
 });
 const mapDispatchToProps = (dispatch) => ({
+	setDefaultCurrency: (data) => dispatch(setDefaultCurrency(data)),
 	getCurrencies: (data) => dispatch(getCurrencies_A(data))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);
