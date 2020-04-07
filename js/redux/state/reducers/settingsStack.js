@@ -1,20 +1,11 @@
 import { GET_CURRENCIES_A, GET_CURRENCIES_R, GET_CURRENCIES_E, GET_CURRENCIES_S } from '../../actions/settingsStack/getCurrencies';
 import { SET_DEFAULT_CURRENCY } from '../../actions/settingsStack/setDefaultCurrency';
 import { ADD_CATEGORY } from '../../actions/settingsStack/addCategory';
-import { DELETE_CATEGORY } from '../../actions/settingsStack/deleteCategories';
+import { DELETE_CATEGORIES } from '../../actions/settingsStack/deleteCategories';
 
 const defaultState = {
 	currencies: [],
-	categories: [
-		{
-			label: 'Food',
-			value: 'Food'
-		},
-		{
-			label: 'Job',
-			value: 'Job'
-		}
-	],
+	categories: [],
 	defaultCurrency: { label: '---', value: '' },
 	getCurrencies_A: false,
 	getCurrencies_S: false,
@@ -74,7 +65,7 @@ const settingsStack = (state = defaultState, action) => {
 			};
 		}
 
-		case DELETE_CATEGORY: {
+		case DELETE_CATEGORIES: {
 			return {
 				...state,
 				categories: getCleanArr(state.categories, action.data)
@@ -92,9 +83,12 @@ const settingsStack = (state = defaultState, action) => {
 			return state;
 	}
 };
-function getCleanArr (arr, deletableEl) {
-	const ind = arr.findIndex((el) => el === deletableEl);
-	arr.splice(ind, 1);
+function getCleanArr (arr, deletableArr) {
+	deletableArr.forEach((el) => {
+		if (arr.includes(el.value)) {
+			arr.splice(el.index, 1);
+		}
+	});
 	return arr;
 }
 export default settingsStack;

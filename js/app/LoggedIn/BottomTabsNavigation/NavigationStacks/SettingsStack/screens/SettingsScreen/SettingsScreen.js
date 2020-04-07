@@ -15,9 +15,8 @@ import { setDefaultCurrency } from 'js/redux/actions/settingsStack/setDefaultCur
 import { deleteCategories } from 'js/redux/actions/settingsStack/deleteCategories';
 import { addCategory } from 'js/redux/actions/settingsStack/addCategory';
 
-function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaultCurrency, categories, deleteCategries }) {
+function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaultCurrency, categories, deleteCategories, addCategory }) {
 	const [ statusBarIsLight, toggleStatusBarStyle ] = useState(true);
-	const [ category, setCategory ] = useState(0);
 	useEffect(() => {
 		if (!currencies.length) getCurrencies();
 	}, []);
@@ -26,9 +25,9 @@ function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaul
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
 			<View flex>
 				<SectionTitle txt={'Record categories'} />
-				<AddCategory setCategory={setCategory} toggleStatusBarStyle={toggleStatusBarStyle} />
+				<AddCategory addCategory={addCategory} toggleStatusBarStyle={toggleStatusBarStyle} />
 				<Divider />
-				<DeleteCategories toggleStatusBarStyle={toggleStatusBarStyle} categories={categories} deleteCategries={deleteCategries} />
+				<DeleteCategories toggleStatusBarStyle={toggleStatusBarStyle} categories={categories} deleteCategories={deleteCategories} />
 				<SectionTitle txt={'Currency'} />
 				<SetDefaultCurrency
 					currencies={currencies}

@@ -1,11 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Picker, Text, View } from 'react-native-ui-lib';
 import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 
-export default function DeleteCategories ({ toggleStatusBarStyle, categories }) {
+export default function DeleteCategories ({ toggleStatusBarStyle, categories, deleteCategories }) {
 	const disabled = !categories.length;
-	const [ selected, setSelected ] = useState([]);
 	const renderBtn = useCallback(
 		() => {
 			const btn = (
@@ -22,30 +21,38 @@ export default function DeleteCategories ({ toggleStatusBarStyle, categories }) 
 	return (
 		<Picker
 			renderPicker={() => renderBtn()}
-			placeholder="Favorite Language"
+			placeholder="Search categories"
 			mode={'MULTI'}
 			floatingPlaceholder
 			onPress={() => toggleStatusBarStyle(false)}
-			value={selected}
 			enableModalBlur={false}
-			onChange={(el) => {
-				toggleStatusBarStyle(true);
-				setSelected([ ...selected, el ]);
-			}}
 			topBarProps={{
-				onCancel: () => {
-					toggleStatusBarStyle(true);
-				},
+				doneLabel: 'Delete',
+				onCancel: () => toggleStatusBarStyle(true),
 				title: 'Select categories'
 			}}
+			onChange={(arr) => {
+				toggleStatusBarStyle(true);
+				deleteCategories(arr);
+			}}
+			value={[]}
 			style={_s.search}
 			showSearch
-			searchPlaceholder={'Search a language'}
+			searchPlaceholder={'Search categories'}
 			searchStyle={{
 				color: _c.dSkyblue,
 				placeholderTextColor: _c.grey
 			}}>
-			{categories.map((option) => <Picker.Item key={option.value} value={option} />)}
+			{categories.map((el, index) => (
+				<Picker.Item
+					key={el}
+					value={{
+						value: el,
+						label: el,
+						index
+					}}
+				/>
+			))}
 		</Picker>
 	);
 }

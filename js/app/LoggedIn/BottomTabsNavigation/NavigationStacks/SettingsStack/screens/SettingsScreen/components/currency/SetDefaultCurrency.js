@@ -23,9 +23,15 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies, 
 		},
 		[ currencies ]
 	);
-	const setPickerLabelTxt = useCallback(() => (defaultCurrency.value ? `Set default currency (${defaultCurrency.value})` : 'Set default currency'), [
-		defaultCurrency
-	]);
+	const setPickerLabelTxt = useCallback(
+		() => {
+			return defaultCurrency.value ? `Set default currency (${defaultCurrency.value})` : 'Set default currency';
+		},
+		[ defaultCurrency ]
+	);
+	const handleOnpress = useCallback(() => {
+		toggleStatusBarStyle(false);
+	}, []);
 	return (
 		<Picker
 			renderPicker={() => (
@@ -38,7 +44,7 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies, 
 			placeholder="Search currency"
 			mode={'SINGLE'}
 			floatingPlaceholder
-			onPress={() => toggleStatusBarStyle(false)}
+			onPress={handleOnpress}
 			value={defaultCurrency}
 			enableModalBlur={false}
 			onChange={(e) => {

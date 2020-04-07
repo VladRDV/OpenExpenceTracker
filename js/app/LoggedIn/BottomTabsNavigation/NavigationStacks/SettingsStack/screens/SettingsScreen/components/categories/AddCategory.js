@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useCallback } from 'react';
 import { Dialog, Text, View, TouchableOpacity } from 'react-native-ui-lib';
 import { TextInput } from 'react-native';
 import { useDimensions } from '@react-native-community/hooks';
@@ -6,23 +6,36 @@ import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function AddCategory ({ toggleStatusBarStyle, setCategory }) {
+export default function AddCategory ({ toggleStatusBarStyle, addCategory }) {
 	const [ txtVal, setTxtVal ] = useState('');
-
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
+	const handleSave = useCallback(
+		() => {
+			toggleDialog(!dialogOn);
+			toggleStatusBarStyle(true);
+			addCategory(txtVal);
+		},
+		[ txtVal ]
+	);
+	const handleDialogCall = useCallback(
+		() => {
+			toggleStatusBarStyle(false);
+			toggleDialog(!dialogOn);
+		},
+		[ dialogOn ]
+	);
+	const handleCancel = useCallback(
+		() => {
+			toggleDialog(!dialogOn);
+			toggleStatusBarStyle(true);
+		},
+		[ dialogOn, txtVal ]
+	);
 	return (
 		<Fragment>
-			<TouchableOpacity
-				onPress={() => {
-					toggleStatusBarStyle(false);
-					toggleDialog(!dialogOn);
-				}}
-				left
-				centerV
-				paddingH-s5
-				style={_s.btn}>
-				<Text allowFontScaling={false} style={_s.btnTxt}>
+			<TouchableOpacity onPress={handleDialogCall} left centerV paddingH-s5 style={_s.btn}>
+				<Text allowFontScaling={false} style={_s.triggerTxt}>
 					Add category
 				</Text>
 			</TouchableOpacity>
@@ -30,28 +43,20 @@ export default function AddCategory ({ toggleStatusBarStyle, setCategory }) {
 				<View flex style={_s.dialog}>
 					<SafeAreaView flex>
 						<View center style={_s.header}>
-							<TouchableOpacity
-								onPress={() => {
-									toggleDialog(!dialogOn);
-									toggleStatusBarStyle(true);
-									setCategory(txtVal);
-								}}>
-								<Text text70 style={{ color: _c.dSkyblue }}>
+							<TouchableOpacity onPress={handleCancel}>
+								<Text text70 style={_s.btnTxt}>
 									Cancel
 								</Text>
 							</TouchableOpacity>
-							<TouchableOpacity
-								onPress={() => {
-									toggleDialog(!dialogOn);
-									toggleStatusBarStyle(true);
-								}}>
-								<Text text70 style={{ color: _c.dSkyblue }}>
+							<TouchableOpacity onPress={handleSave}>
+								<Text text70 style={_s.btnTxt}>
 									Save
 								</Text>
 							</TouchableOpacity>
 						</View>
 						<View style={_s.inputContainer}>
 							<TextInput
+								autoFocus
 								maxLength={30}
 								placeholder={'Type the name of the category'}
 								value={txtVal}
@@ -75,7 +80,7 @@ const _s = ScaledSheet.create({
 	btn: {
 		height: '60@s'
 	},
-	btnTxt: {
+	triggerTxt: {
 		color: _c.black,
 		fontSize: '18@s'
 	},
@@ -112,5 +117,6 @@ const _s = ScaledSheet.create({
 		textAlignVertical: 'top',
 		color: _c.black,
 		fontSize: '20@msr'
-	}
+	},
+	btnTxt: { color: _c.dSkyblue }
 });
