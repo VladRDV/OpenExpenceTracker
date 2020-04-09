@@ -25,7 +25,7 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies, 
 	);
 	const setPickerLabelTxt = useCallback(
 		() => {
-			return defaultCurrency.value ? `Set default currency (${defaultCurrency.value})` : 'Set default currency';
+			return defaultCurrency.value ? `Set currency (${defaultCurrency.value})` : 'Set currency';
 		},
 		[ defaultCurrency ]
 	);

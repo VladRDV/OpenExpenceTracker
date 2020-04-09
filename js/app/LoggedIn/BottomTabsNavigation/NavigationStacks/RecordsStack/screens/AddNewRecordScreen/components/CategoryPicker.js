@@ -1,30 +1,42 @@
 import React from 'react';
-import { Colors, View, Picker, Button } from 'react-native-ui-lib';
-import { scale } from 'react-native-size-matters';
-
+import { Picker } from 'react-native-ui-lib';
 import _c from 'js/uiConfig/colors';
 
-export default function CategoryPicker ({ toggleStatusBarStyle, categories, select, toggle }) {
+export default function CategoryPicker ({ statusBarState, categories, inputState }) {
+	const [ statusBarIsLight, toggleStatusBarStyle ] = statusBarState;
+	const [ selectedCategory, setSelectedCategory ] = inputState;
+	const topBarProps = {
+		title: 'Categories',
+		onCancel: () => {
+			toggleStatusBarStyle(true);
+		}
+	};
 	return (
 		<Picker
 			placeholder="Choose category"
 			mode={'SINGLE'}
 			title={'Category*'}
 			onPress={() => toggleStatusBarStyle(false)}
-			// value={language}
+			value={selectedCategory}
 			enableModalBlur={false}
 			onPress={() => toggleStatusBarStyle(true)}
-			topBarProps={{
-				title: 'Categories',
-				onCancel: () => {
-					toggleStatusBarStyle(true);
-				}
+			topBarProps={topBarProps}
+			onChange={(x) => {
+				toggleStatusBarStyle(true);
+				setSelectedCategory(x.value);
 			}}
-			style={{ color: Colors.red20 }}
 			showSearch
-			searchPlaceholder={'Search a language'}
-			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
-			{categories.map((option) => <Picker.Item key={option.value} value={option} />)}
+			searchPlaceholder={'Search categories'}>
+			{categories.map((el, index) => (
+				<Picker.Item
+					key={el}
+					value={{
+						value: el,
+						label: el,
+						index
+					}}
+				/>
+			))}
 		</Picker>
 	);
 }

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useCallback } from 'react';
-import { Dialog, Text, View, TouchableOpacity } from 'react-native-ui-lib';
+import { Dialog, Text, View, TouchableOpacity, RadioGroup, RadioButton } from 'react-native-ui-lib';
 import { TextInput, Alert } from 'react-native';
 import { useDimensions } from '@react-native-community/hooks';
 import _c from 'js/uiConfig/colors';
@@ -10,6 +10,7 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 	const [ txtVal, setTxtVal ] = useState('');
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
+	const [ recordType, setRecordType ] = useState('inc');
 	const handleSave = useCallback(
 		() => {
 			if (categories.includes(txtVal)) {
@@ -58,6 +59,10 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 								</Text>
 							</TouchableOpacity>
 						</View>
+						<RadioGroup value={recordType} onValueChange={(x) => setRecordType(x)} initialValue={'inc'} style={_s.header}>
+							<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={'inc'} label={'Income'} />
+							<RadioButton color={_c.gold} labelStyle={{ color: _c.gold }} value={'exp'} label={'Expence'} />
+						</RadioGroup>
 						<View style={_s.inputContainer}>
 							<TextInput
 								autoFocus

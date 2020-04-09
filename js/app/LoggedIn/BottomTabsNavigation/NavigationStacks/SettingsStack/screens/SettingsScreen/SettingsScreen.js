@@ -26,7 +26,7 @@ function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaul
 			<View flex>
 				<SectionTitle txt={'Record categories'} />
 				<AddCategory categories={categories} addCategory={addCategory} toggleStatusBarStyle={toggleStatusBarStyle} />
-				{!!categories.length && (
+				{categories.length > 2 && (
 					<Fragment>
 						<Divider />
 						<DeleteCategories toggleStatusBarStyle={toggleStatusBarStyle} categories={categories} deleteCategories={deleteCategories} />

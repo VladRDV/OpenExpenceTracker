@@ -1,33 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { View, RadioGroup, RadioButton } from 'react-native-ui-lib';
 import _c from 'js/uiConfig/colors';
-import { scale } from 'react-native-size-matters';
+import { connect } from 'react-redux';
+//components
 import CategoryPicker from './components/CategoryPicker';
 import DatePicker from './components/DatePicker';
 import AmmountInput from './components/AmmountInput';
-import SidenoteInput from './components/SidenoteInput';
+import TitleInput from './components/TitleInput';
 import FormSubmit from './components/FormSubmit';
-import { connect } from 'react-redux';
+// redux actions
 
-function AddNewRecordScreen ({ navigation, categories }) {
-	const [ typeFilterMode, setTypeFilter ] = useState('inc');
-	const [ date, setDate ] = useState(new Date());
-	const [ statusBarIsLight, toggleStatusBarStyle ] = useState(true);
+function AddNewRecordScreen ({ categories }) {
+	const statusBarState = useState(true);
+	const [ recordType, setRecordType ] = useState('inc');
+	const titleState = useState('');
+	const dateState = useState(new Date());
+	const ammountState = useState('');
+	const recordCategoryState = useState('');
+	const statusBarIsLight = statusBarState[0] ? 'light-content' : 'dark-content';
+	const submitForm = useCallback(
+		() => {
+			console.log('AddNewRecord');
+		},
+		[ titleState[0], dateState[0], ammountState[0], recordCategoryState[0], recordType ]
+	);
 	return (
 		<View flex style={_s.container}>
-			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
-			<RadioGroup value={typeFilterMode} onValueChange={(x) => setTypeFilter(x)} initialValue={'inc'} style={_s.filter}>
+			<StatusBar barStyle={statusBarIsLight} animated />
+			<RadioGroup value={recordType} onValueChange={(x) => setRecordType(x)} initialValue={'inc'} style={_s.filter}>
 				<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={'inc'} label={'Income'} />
 				<RadioButton color={_c.gold} labelStyle={{ color: _c.gold }} value={'exp'} label={'Expence'} />
 			</RadioGroup>
 			<View paddingH-20 paddingT-40 flex>
-				<AmmountInput toggleStatusBarStyle={toggleStatusBarStyle} statusBarIsLight={statusBarIsLight} />
-				<DatePicker setDate={setDate} date={date} />
-				<CategoryPicker categories={categories} />
-				<SidenoteInput toggleStatusBarStyle={toggleStatusBarStyle} statusBarIsLight={statusBarIsLight} />
+				<TitleInput statusBarState={statusBarState} inputState={titleState} />
+				<AmmountInput statusBarState={statusBarState} inputState={ammountState} />
+				<DatePicker inputState={dateState} />
+				<CategoryPicker statusBarState={statusBarState} categories={categories} inputState={recordCategoryState} />
 			</View>
-			<FormSubmit />
+			<FormSubmit submitForm={submitForm} />
 		</View>
 	);
 }
@@ -51,8 +62,7 @@ const mapStateToProps = ({ settingsStack }) => ({
 	categories: settingsStack.categories,
 	defaultCurrency: settingsStack.defaultCurrency
 });
-const mapDispatchToProps = (dispatch) => ({
-	setDefaultCurrency: (data) => dispatch(setDefaultCurrency(data)),
-	getCurrencies: (data) => dispatch(getCurrencies_A(data))
-});
-export default connect(mapStateToProps, mapDispatchToProps)(AddNewRecordScreen);
+// const mapDispatchToProps = (dispatch) => ({
+// 	getCurrencies: (data) => dispatch(getCurrencies_A(data))
+// });
+export default connect(mapStateToProps, null)(AddNewRecordScreen);

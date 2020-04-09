@@ -1,19 +1,19 @@
 import React from 'react';
 import { TextField } from 'react-native-ui-lib';
-import { scale } from 'react-native-size-matters';
 
-import _c from 'js/uiConfig/colors';
-
-export default function AmmountInput ({ toggleStatusBarStyle, arr, select, toggle, statusBarIsLight }) {
+export default function AmmountInput ({ statusBarState, inputState }) {
+	const [ ammount, setAmmount ] = inputState;
+	const [ statusBarIsLight, toggleStatusBarStyle ] = statusBarState;
 	return (
 		<TextField
+			value={ammount}
+			onChangeText={(txt) => setAmmount(txt)}
 			key={'Ammount'}
 			title={'Ammount*'}
 			placeholder={'Type the ammount'}
 			expandable
-			// floatingPlaceholder={true}
 			onToggleExpandableModal={() => toggleStatusBarStyle(!statusBarIsLight)}
-			maxLength={50}
+			maxLength={6}
 		/>
 	);
 }
