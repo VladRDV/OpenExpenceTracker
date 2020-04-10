@@ -5,7 +5,16 @@ import { DELETE_CATEGORIES } from '../../actions/settingsStack/deleteCategories'
 
 const defaultState = {
 	currencies: [],
-	categories: [ 'groceries', 'salary' ],
+	categories: [
+		{
+			name: 'groceries',
+			isInc: false
+		},
+		{
+			name: 'salary',
+			isInc: true
+		}
+	],
 	defaultCurrency: { label: '---', value: '' },
 	getCurrencies_A: false,
 	getCurrencies_S: false,
@@ -85,10 +94,8 @@ const settingsStack = (state = defaultState, action) => {
 };
 function getCleanArr (arr, deletableArr) {
 	deletableArr.forEach((el) => {
-		if (arr.includes(el.value)) {
-			if (arr.length > 2) {
-				arr.splice(el.index, 1);
-			}
+		if (arr.length > 2) {
+			arr.splice(el.index, 1);
 		}
 	});
 	return arr;

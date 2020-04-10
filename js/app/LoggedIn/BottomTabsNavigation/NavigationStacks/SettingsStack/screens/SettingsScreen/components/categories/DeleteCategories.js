@@ -37,10 +37,10 @@ export default function DeleteCategories ({ toggleStatusBarStyle, categories, de
 			}}>
 			{categories.map((el, index) => (
 				<Picker.Item
-					key={el}
+					key={el.name}
 					value={{
-						value: el,
-						label: el,
+						value: el.name,
+						label: el.name,
 						index
 					}}
 				/>

@@ -7,21 +7,24 @@ import { ScaledSheet } from 'react-native-size-matters';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AddCategory ({ toggleStatusBarStyle, addCategory, categories }) {
-	const [ txtVal, setTxtVal ] = useState('');
+	const [ name, setName ] = useState('');
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
-	const [ recordType, setRecordType ] = useState('inc');
+	const [ isInc, setIsInc ] = useState(true);
 	const handleSave = useCallback(
 		() => {
-			if (categories.includes(txtVal)) {
+			if (categories.includes(name)) {
 				Alert.alert('Open Expence Tracker', 'Provided category already exists');
 			} else {
 				toggleDialog(!dialogOn);
 				toggleStatusBarStyle(true);
-				addCategory(txtVal);
+				addCategory({
+					name,
+					isInc
+				});
 			}
 		},
-		[ txtVal ]
+		[ name ]
 	);
 	const handleDialogCall = useCallback(
 		() => {
@@ -35,7 +38,7 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 			toggleDialog(!dialogOn);
 			toggleStatusBarStyle(true);
 		},
-		[ dialogOn, txtVal ]
+		[ dialogOn, name ]
 	);
 	return (
 		<Fragment>
@@ -59,17 +62,21 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 								</Text>
 							</TouchableOpacity>
 						</View>
-						<RadioGroup value={recordType} onValueChange={(x) => setRecordType(x)} initialValue={'inc'} style={_s.header}>
-							<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={'inc'} label={'Income'} />
-							<RadioButton color={_c.gold} labelStyle={{ color: _c.gold }} value={'exp'} label={'Expence'} />
+						<RadioGroup
+							value={isInc}
+							onValueChange={(x) => setIsInc(x)}
+							initialValue={isInc}
+							style={[ _s.header, { justifyContent: 'space-around' } ]}>
+							<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={true} label={'Income'} />
+							<RadioButton color={_c.red} labelStyle={{ color: _c.red }} value={false} label={'Expence'} />
 						</RadioGroup>
 						<View style={_s.inputContainer}>
 							<TextInput
 								autoFocus
 								maxLength={30}
 								placeholder={'Type the name of the category'}
-								value={txtVal}
-								onChangeText={(text) => setTxtVal(text)}
+								value={name}
+								onChangeText={(text) => setName(text)}
 								placeholderTextColor={_c.grey}
 								returnKeyType="done"
 								multiline={false}

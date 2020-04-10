@@ -13,7 +13,7 @@ import FormSubmit from './components/FormSubmit';
 
 function AddNewRecordScreen ({ categories }) {
 	const statusBarState = useState(true);
-	const [ recordType, setRecordType ] = useState('inc');
+	const [ recordType, setRecordType ] = useState(true);
 	const titleState = useState('');
 	const dateState = useState(new Date());
 	const ammountState = useState('');
@@ -28,15 +28,15 @@ function AddNewRecordScreen ({ categories }) {
 	return (
 		<View flex style={_s.container}>
 			<StatusBar barStyle={statusBarIsLight} animated />
-			<RadioGroup value={recordType} onValueChange={(x) => setRecordType(x)} initialValue={'inc'} style={_s.filter}>
-				<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={'inc'} label={'Income'} />
-				<RadioButton color={_c.gold} labelStyle={{ color: _c.gold }} value={'exp'} label={'Expence'} />
+			<RadioGroup value={recordType} onValueChange={(x) => setRecordType(x)} initialValue={true} style={_s.filter}>
+				<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={true} label={'Income'} />
+				<RadioButton color={_c.gold} labelStyle={{ color: _c.gold }} value={false} label={'Expence'} />
 			</RadioGroup>
 			<View paddingH-20 paddingT-40 flex>
 				<TitleInput statusBarState={statusBarState} inputState={titleState} />
 				<AmmountInput statusBarState={statusBarState} inputState={ammountState} />
 				<DatePicker inputState={dateState} />
-				<CategoryPicker statusBarState={statusBarState} categories={categories} inputState={recordCategoryState} />
+				<CategoryPicker statusBarState={statusBarState} categories={categories} inputState={recordCategoryState} recordType={recordType} />
 			</View>
 			<FormSubmit submitForm={submitForm} />
 		</View>
