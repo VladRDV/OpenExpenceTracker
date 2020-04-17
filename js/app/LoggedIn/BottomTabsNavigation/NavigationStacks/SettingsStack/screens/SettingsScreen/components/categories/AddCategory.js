@@ -128,6 +128,7 @@ const _s = ScaledSheet.create({
 		justifyContent: 'flex-start'
 	},
 	input: {
+		marginTop: '5%',
 		paddingHorizontal: '3%',
 		textAlign: 'left',
 		textAlignVertical: 'top',

@@ -30,7 +30,7 @@ function AddNewRecordScreen ({ categories }) {
 			<StatusBar barStyle={statusBarIsLight} animated />
 			<RadioGroup value={recordType} onValueChange={(x) => setRecordType(x)} initialValue={true} style={_s.filter}>
 				<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={true} label={'Income'} />
-				<RadioButton color={_c.gold} labelStyle={{ color: _c.gold }} value={false} label={'Expence'} />
+				<RadioButton color={_c.red} labelStyle={{ color: _c.red }} value={false} label={'Expence'} />
 			</RadioGroup>
 			<View paddingH-20 paddingT-40 flex>
 				<TitleInput statusBarState={statusBarState} inputState={titleState} />
