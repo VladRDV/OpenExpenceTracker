@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useCallback } from 'react';
-import { Dialog, Text, View, TouchableOpacity, RadioGroup, RadioButton } from 'react-native-ui-lib';
+import { Modal, Text, View, TouchableOpacity, RadioGroup, RadioButton } from 'react-native-ui-lib';
 import { TextInput, Alert } from 'react-native';
 import { useDimensions } from '@react-native-community/hooks';
 import _c from 'js/uiConfig/colors';
@@ -47,9 +47,9 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 					Add category
 				</Text>
 			</TouchableOpacity>
-			<Dialog overlayBackgroundColor={'transparent'} height={height} width={width} visible={dialogOn}>
-				<View flex style={_s.dialog}>
-					<SafeAreaView flex>
+			<Modal overlayBackgroundColor={'transparent'} height={height} width={width} visible={dialogOn}>
+				<View style={_s.dialog}>
+					<SafeAreaView contentContainerStyle={{flex:1}}>
 						<View center style={_s.header}>
 							<TouchableOpacity onPress={handleCancel}>
 								<Text text70 style={_s.btnTxt}>
@@ -87,7 +87,7 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 						</View>
 					</SafeAreaView>
 				</View>
-			</Dialog>
+			</Modal>
 		</Fragment>
 	);
 }
@@ -104,6 +104,7 @@ const _s = ScaledSheet.create({
 		color: _c.grey
 	},
 	dialog: {
+		flex:1,
 		backgroundColor: _c.white
 	},
 	header: {
