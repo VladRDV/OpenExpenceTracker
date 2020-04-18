@@ -3,7 +3,6 @@ import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import RecordListScreen from './screens/RecordListScreen/RecordListScreen';
-import RedordDetailsScreen from './screens/RedordDetailsScreen';
 import AddNewRecordScreen from './screens/AddNewRecordScreen/AddNewRecordScreen';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -36,28 +35,11 @@ export default function RecordsStack ({ navigation, route }) {
 						return {
 							title: 'Records list',
 							headerTintColor: _c.black,
-							headerRight: () => (
+							headerLeft: () => (
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.navigate('AddNewRecordScreen')}
 									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.gold} />}
-								/>
-							)
-						};
-					}}
-				/>
-				<Screen
-					name="RecordDetailsScreen"
-					component={RedordDetailsScreen}
-					options={() => {
-						return {
-							title: 'Records details',
-							headerTintColor: _c.black,
-							headerRight: () => (
-								<TouchableOpacity
-									style={{ marginHorizontal: scale(8) }}
-									onPress={navigation.goBack}
-									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.dSkyblue} />}
 								/>
 							)
 						};

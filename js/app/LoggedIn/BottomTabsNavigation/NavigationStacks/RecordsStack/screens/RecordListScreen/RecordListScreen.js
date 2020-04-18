@@ -32,7 +32,7 @@ function RecordListScreen ({ navigation, list }) {
 	};
 	useEffect(() => {
 		navigation.setOptions({
-			headerLeft: () => {
+			headerRight: () => {
 				return (
 					<View style={{ flexDirection: 'row' }}>
 						<TouchableOpacity
