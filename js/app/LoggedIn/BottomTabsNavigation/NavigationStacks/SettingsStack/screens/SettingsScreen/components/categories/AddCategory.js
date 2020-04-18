@@ -49,7 +49,7 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 			</TouchableOpacity>
 			<Modal overlayBackgroundColor={'transparent'} height={height} width={width} visible={dialogOn}>
 				<View style={_s.dialog}>
-					<SafeAreaView contentContainerStyle={{flex:1}}>
+					<SafeAreaView style={_s.safeAreaView}>
 						<View center style={_s.header}>
 							<TouchableOpacity onPress={handleCancel}>
 								<Text text70 style={_s.btnTxt}>
@@ -104,7 +104,7 @@ const _s = ScaledSheet.create({
 		color: _c.grey
 	},
 	dialog: {
-		flex:1,
+		flex: 1,
 		backgroundColor: _c.white
 	},
 	header: {
@@ -130,11 +130,13 @@ const _s = ScaledSheet.create({
 	},
 	input: {
 		marginTop: '5%',
+		minWidth: '100%',
 		paddingHorizontal: '3%',
 		textAlign: 'left',
 		textAlignVertical: 'top',
 		color: _c.black,
 		fontSize: '20@msr'
 	},
+	safeAreaView: { flex: 1 },
 	btnTxt: { color: _c.dSkyblue }
 });
