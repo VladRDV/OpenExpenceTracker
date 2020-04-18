@@ -10,7 +10,7 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 	const [ name, setName ] = useState('');
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
-	const [ isInc, setIsInc ] = useState(true);
+	const [ type, setType ] = useState(true);
 	const handleSave = useCallback(
 		() => {
 			if (categories.includes(name)) {
@@ -20,7 +20,7 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 				toggleStatusBarStyle(true);
 				addCategory({
 					name,
-					isInc
+					type
 				});
 			}
 		},
@@ -63,12 +63,12 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 							</TouchableOpacity>
 						</View>
 						<RadioGroup
-							value={isInc}
-							onValueChange={(x) => setIsInc(x)}
-							initialValue={isInc}
+							value={type}
+							onValueChange={(x) => setType(x)}
+							initialValue={type}
 							style={[ _s.header, { justifyContent: 'space-around' } ]}>
-							<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={true} label={'Income'} />
-							<RadioButton color={_c.red} labelStyle={{ color: _c.red }} value={false} label={'Expence'} />
+							<RadioButton color={_c.green} labelStyle={{ color: _c.green }} value={'inc'} label={'Income'} />
+							<RadioButton color={_c.red} labelStyle={{ color: _c.red }} value={'exp'} label={'Expence'} />
 						</RadioGroup>
 						<View style={_s.inputContainer}>
 							<TextInput

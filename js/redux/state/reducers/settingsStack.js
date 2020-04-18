@@ -8,11 +8,11 @@ const defaultState = {
 	categories: [
 		{
 			name: 'groceries',
-			isInc: false
+			type: 'exp'
 		},
 		{
 			name: 'salary',
-			isInc: true
+			type: 'inc'
 		}
 	],
 	defaultCurrency: { label: '---', value: '' },

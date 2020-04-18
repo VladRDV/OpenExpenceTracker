@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import RecordListScreen from './screens/RecordListScreen/RecordListScreen';
 import AddNewRecordScreen from './screens/AddNewRecordScreen/AddNewRecordScreen';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale } from 'react-native-size-matters';
 
@@ -39,7 +39,7 @@ export default function RecordsStack ({ navigation, route }) {
 								<TouchableOpacity
 									style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.navigate('AddNewRecordScreen')}
-									children={<Ionicons size={scale(25)} name={'md-add'} color={_c.gold} />}
+									children={<MaterialCommunityIcons size={scale(25)} name={'plus-circle-outline'} color={_c.gold} />}
 								/>
 							)
 						};
@@ -54,7 +54,6 @@ export default function RecordsStack ({ navigation, route }) {
 							headerTintColor: _c.black,
 							headerLeft: () => (
 								<TouchableOpacity
-									// style={{ marginHorizontal: scale(8) }}
 									onPress={() => navigation.navigate('RecordListScreen')}
 									children={<MaterialIcons size={scale(40)} name={'chevron-left'} color={_c.gold} />}
 								/>

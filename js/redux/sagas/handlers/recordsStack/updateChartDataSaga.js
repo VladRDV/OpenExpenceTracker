@@ -1,11 +1,11 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { getCurrencies_E, getCurrencies_S, GET_CURRENCIES_A } from 'js/redux/actions/settingsStack/getCurrencies';
+import { ADD_RECORD } from 'js/redux/actions/recordsStack/recordList_CRUD';
 import axios from 'axios';
 
 // fetching a currency list is not a necessity, this saga is here more for demonstrational purpoces
 
 export default function* () {
-	yield takeEvery(GET_CURRENCIES_A, handleGetCurrencies);
+	yield takeEvery(ADD_RECORD, handleGetCurrencies);
 }
 
 function checkStatus (response) {
