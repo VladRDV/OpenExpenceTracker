@@ -1,28 +1,24 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { ADD_RECORD } from 'js/redux/actions/recordsStack/recordList_CRUD';
-import axios from 'axios';
-
-// fetching a currency list is not a necessity, this saga is here more for demonstrational purpoces
+import * as moment from 'moment';
+import {
+	updateDayIncomeReport,
+	updateWeekIncomeReport,
+	updateMonthIncomeReport,
+	updateDayExpenceReport,
+	updateWeekExpenceReport,
+	updateMonthExpenceReport
+} from 'js/redux/actions/statisticsStack/generateReport.js';
 
 export default function* () {
-	yield takeEvery(ADD_RECORD, handleGetCurrencies);
-}
-
-function checkStatus (response) {
-	if (response.status >= 200 && response.status < 300) {
-		return response;
-	} else {
-		var err = new Error(response.statusText);
-		err.response = response;
-		throw err;
-	}
+	yield takeEvery(ADD_RECORD, handleUpdateReport);
 }
 
 function getCurrencies (opt, url) {
 	return axios({ ...opt, url }).then(checkStatus);
 }
 
-function* handleGetCurrencies ({ data }) {
+function* handleUpdateReport ({ data }) {
 	const listUrl = `https://openexchangerates.org/api/currencies.json`;
 	const options = {
 		method: 'GET',

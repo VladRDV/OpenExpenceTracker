@@ -5,7 +5,14 @@ import { ScaledSheet } from 'react-native-size-matters';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies, defaultCurrency, setDefaultCurrency }) {
-	let renderOptions = useCallback(
+	const topBarProps = {
+		title: 'Select currency',
+		onCancel: () => {
+			toggleStatusBarStyle(true);
+		}
+	};
+
+	const renderOptions = useCallback(
 		() => {
 			let arr = [];
 			for (let x in currencies) {
@@ -23,44 +30,42 @@ export default function SetDefaultCurrency ({ toggleStatusBarStyle, currencies, 
 		},
 		[ currencies ]
 	);
-	const setPickerLabelTxt = useCallback(
-		() => {
-			return defaultCurrency.value ? `Set currency (${defaultCurrency.value})` : 'Set currency';
-		},
-		[ defaultCurrency ]
-	);
 	const handleOnpress = useCallback(() => {
 		toggleStatusBarStyle(false);
 	}, []);
+	const handleChange = useCallback((e) => {
+		toggleStatusBarStyle(true);
+		setDefaultCurrency(e);
+	}, []);
+	const renderPicker = useCallback(
+		() => (
+			<View flex left centerV paddingH-s5 style={_s.pickerLabel}>
+				<Text ellipsizeMode={'tail'} allowFontScaling={false} style={_s.pickerLabelTxt}>
+					{`Set currency (${defaultCurrency.value})`}
+				</Text>
+			</View>
+		),
+		[ defaultCurrency ]
+	);
+
 	return (
 		<Picker
-			renderPicker={() => (
-				<View flex left centerV paddingH-s5 style={_s.pickerLabel}>
-					<Text ellipsizeMode={'tail'} allowFontScaling={false} style={_s.pickerLabelTxt}>
-						{setPickerLabelTxt()}
-					</Text>
-				</View>
-			)}
+			renderPicker={renderPicker}
 			placeholder="Search currency"
 			mode={'SINGLE'}
 			floatingPlaceholder
 			onPress={handleOnpress}
 			value={defaultCurrency}
 			enableModalBlur={false}
-			onChange={(e) => {
-				toggleStatusBarStyle(true);
-				setDefaultCurrency(e);
-			}}
-			topBarProps={{
-				title: 'Select currency',
-				onCancel: () => {
-					toggleStatusBarStyle(true);
-				}
-			}}
+			onChange={handleChange}
+			topBarProps={topBarProps}
 			style={{ color: Colors.red20 }}
 			showSearch
 			searchPlaceholder={'Search a language'}
-			searchStyle={{ color: Colors.blue30, placeholderTextColor: Colors.dark50 }}>
+			searchStyle={{
+				color: _c.dSkyBlue,
+				placeholderTextColor: _c.lGrey
+			}}>
 			{renderOptions()}
 			<SafeAreaView style={_s.bottomOffset} />
 		</Picker>

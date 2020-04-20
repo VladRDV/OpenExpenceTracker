@@ -2,15 +2,16 @@ import React, { Fragment, useState, useCallback } from 'react';
 import { Modal, Text, View, TouchableOpacity, RadioGroup, RadioButton } from 'react-native-ui-lib';
 import { TextInput, Alert } from 'react-native';
 import { useDimensions } from '@react-native-community/hooks';
-import _c from 'js/uiConfig/colors';
 import { ScaledSheet } from 'react-native-size-matters';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import _c from 'js/uiConfig/colors';
 
 export default function AddCategory ({ toggleStatusBarStyle, addCategory, categories }) {
 	const [ name, setName ] = useState('');
 	const [ dialogOn, toggleDialog ] = useState(false);
 	const { width, height } = useDimensions().window;
-	const [ type, setType ] = useState(true);
+	const [ type, setType ] = useState('inc');
+
 	const handleSave = useCallback(
 		() => {
 			if (categories.includes(name)) {
@@ -40,6 +41,7 @@ export default function AddCategory ({ toggleStatusBarStyle, addCategory, catego
 		},
 		[ dialogOn, name ]
 	);
+
 	return (
 		<Fragment>
 			<TouchableOpacity onPress={handleDialogCall} left centerV paddingH-s5 style={_s.btn}>

@@ -3,7 +3,7 @@ import { Picker } from 'react-native-ui-lib';
 import _c from 'js/uiConfig/colors';
 
 export default function CategoryPicker ({ statusBarState, categories, inputState, recordType }) {
-	const [ statusBarIsLight, toggleStatusBarStyle ] = statusBarState;
+	const toggleStatusBarStyle = statusBarState[1];
 	const [ selectedCategory, setSelectedCategory ] = inputState;
 	let renderCategories = useCallback(
 		() => {
@@ -50,7 +50,7 @@ export default function CategoryPicker ({ statusBarState, categories, inputState
 			placeholder="Choose category"
 			mode={'SINGLE'}
 			getLabel={handleGetLabel}
-			title={'Category*'}
+			title={'Category'}
 			onPress={turnStatusBarOff}
 			value={selectedCategory}
 			enableModalBlur={false}

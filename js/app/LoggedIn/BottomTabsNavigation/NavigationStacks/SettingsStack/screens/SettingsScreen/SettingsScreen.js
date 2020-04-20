@@ -17,9 +17,11 @@ import { addCategory } from 'js/redux/actions/settingsStack/addCategory';
 
 function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaultCurrency, categories, deleteCategories, addCategory }) {
 	const [ statusBarIsLight, toggleStatusBarStyle ] = useState(true);
+
 	useEffect(() => {
 		if (!currencies.length) getCurrencies();
 	}, []);
+
 	return (
 		<ScrollView contentContainerStyle={{ backgroundColor: _c.white, flex: 1 }}>
 			<StatusBar barStyle={statusBarIsLight ? 'light-content' : 'dark-content'} animated />
@@ -44,6 +46,7 @@ function SettingsScreen ({ currencies, getCurrencies, setDefaultCurrency, defaul
 		</ScrollView>
 	);
 }
+
 const mapStateToProps = ({ settingsStack }) => ({
 	currencies: settingsStack.currencies,
 	categories: settingsStack.categories,
@@ -55,4 +58,5 @@ const mapDispatchToProps = (dispatch) => ({
 	deleteCategories: (data) => dispatch(deleteCategories(data)),
 	addCategory: (data) => dispatch(addCategory(data))
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

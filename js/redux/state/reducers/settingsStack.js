@@ -15,7 +15,7 @@ const defaultState = {
 			type: 'inc'
 		}
 	],
-	defaultCurrency: { label: '---', value: '' },
+	defaultCurrency: { label: 'USD', value: 'United States Dollar' },
 	getCurrencies_A: false,
 	getCurrencies_S: false,
 	getCurrencies_E: false

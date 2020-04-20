@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, Alert } from 'react-native';
 import { View } from 'react-native-ui-lib';
 import _c from 'js/uiConfig/colors';
+import moment from 'moment';
 import { connect } from 'react-redux';
 //components
 import CategoryPicker from './components/CategoryPicker';
@@ -24,20 +25,32 @@ function AddNewRecordScreen ({ categories, defaultCurrency, addRecord }) {
 	const statusBarIsLight = statusBarState[0] ? 'light-content' : 'dark-content';
 	const canSubmit = titleState[0].length && ammountState[0].length && recordCategoryState[0];
 
-	let submitForm = useCallback(
+	const resetForm = useCallback(
 		() => {
-			let d = dateState[0];
+			setRecordType('inc');
+			recordCategoryState[1]('');
+			titleState[1]('');
+			dateState[1](new Date());
+			ammountState[1][''];
+			Alert.alert('Open Expence Tracker', 'Done.');
+		},
+		[ titleState[0], dateState[0], ammountState[0], recordCategoryState[0], recordType ]
+	);
+	const submitForm = useCallback(
+		() => {
+			const d = dateState[0];
 			addRecord({
 				title: titleState[0],
 				category: recordCategoryState[0],
 				type: recordType,
-				date: `${d.getDate()}/${d.getMonth++}/${d.getFullYear()}`,
+				date: `${moment(d).format('DD MMM YYYY')}`,
 				ammount: ammountState[0]
 			});
+			resetForm();
 		},
 		[ titleState[0], dateState[0], ammountState[0], recordCategoryState[0], recordType ]
 	);
-	let handleRadioChange = useCallback((x) => {
+	const handleRadioChange = useCallback((x) => {
 		setRecordType(x);
 		recordCategoryState[1]();
 	});
